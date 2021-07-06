@@ -1,0 +1,89 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>داریان - لینک دات آی آر</title>
+    <meta name="keywords" content="لینک, کوتاه,فشرده,خلاصه,کوتاه سازی,لینک سازی,link,link shortener,ls1,لینک دات آی آر,داریان,darian,darian mh,سئو" />
+    <meta name="description" content="لینک دات آی آر یک محصول از داریان است.محصولی ساده و روان برای خلاصه سازی لینک های شما." />
+    <link href="~/lib/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/css/HomeCss.css" rel="stylesheet" />
+</head>
+<body dir="rtl">
+
+    <main>
+        <div class="container">
+            <h1><a href="https://ls1.ir">لینک دات آی آر</a></h1>
+            <h2>مختصر و مفید <i class="fa fa-question-circle modalLink pointer" onclick="openModal()"></i></h2>
+            <div class="search-box">
+                <div class="search-icon pointer" onclick="getLink()"><i class="fa fa-link search-icon"></i></div>
+                <form action="" class="search-form">
+                    <input type="text" placeholder="لینک شما" id="search" autocomplete="off">
+                </form>
+                <svg class="search-border" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/" x="0px" y="0px" viewBox="0 0 671 111" style="enable-background:new 0 0 671 111;"
+                     xml:space="preserve">
+                <path class="border" d="M335.5,108.5h-280c-29.3,0-53-23.7-53-53v0c0-29.3,23.7-53,53-53h280" />
+                <path class="border" d="M335.5,108.5h280c29.3,0,53-23.7,53-53v0c0-29.3-23.7-53-53-53h-280" />
+                </svg>
+                <div class="go-icon">
+                    <i class="fa fa-search"></i>
+                </div>
+            </div>
+            <br />
+            <br />
+            <h2 class="shortLink hidden">
+                <span id="shortLinkText">لینک ما</span>
+                <i class="fa fa-copy"></i>
+            </h2>
+
+        </div>
+    </main>
+    <footer>
+        <a href="#" class="modalLink" onclick="openModal()">درباره لینک</a>
+        <a target="_blank" href="https://darianmh.ir">داریان mh</a>
+        <a target="_blank" href="https://darianteam.ir">تیم داریان</a>
+        <a target="_blank" href="https://coffeebede.ir/darianmh">یه قهوه برام بخر</a>
+    </footer>
+    <input class="" readonly id="Short_Link" />
+
+    @* modal *@
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <hr />
+            <p>
+                لینک دات آی آر یک محصول از
+                <b>داریان</b>
+                .محصولی ساده و روان برای خلاصه سازی لینک های شما.
+            </p>
+            <p>برای استفاده از محصول تنها کافیست لینک اصلی را در اینپوت صفحه وارد کنید. پس از فشرده کلید اینتر. لینک را از قسمت پایینی کپی کنید.</p>
+            <p>
+                همچنین شما می توانید با وارد کرد علامت '$' در بعد از لینک خلاصه شده خود. آمار بازدید لینک را نیز مشاده نمایید.
+                <span>(https://ls1/214C8$)</span>
+            </p>
+            <p>پیشاپیش از همایت های شما تشکر می کنیم.</p>
+        </div>
+
+    </div>
+    @* end modal *@
+    <div class="loader hidden"></div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/js/HomeScript.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-37H2B8QSLS"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-37H2B8QSLS');
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+﻿@model StaticModel
+
+@{
+    Layout = null;
+}
+
+<h2>title</h2>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>داریان - @Model.Link.MainLink</title>
+    <meta name="keywords" content="لینک, کوتاه,فشرده,خلاصه,کوتاه سازی,لینک سازی,link,link shortener,ls1,لینک دات آی آر,داریان,darian,darian mh,سئو" />
+    <meta name="description" content="لینک دات آی آر یک محصول از داریان است.محصولی ساده و روان برای خلاصه سازی لینک های شما." />
+    <link href="~/lib/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/HomeCss.css" rel="stylesheet" />
+</head>
+<body dir="rtl">
+
+    <main>
+        <div class="container">
+            <table class="table table-striped table-dark">
+                <tbody>
+                    <tr>
+                        <td>لینک اصلی</td>
+                        <td><a target="_blank" href="https://ls1.ir/@Model.Link.MainLink">لینک کوتاه@Model.Link.MainLink</a></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><a target="_blank" href="https://ls1.ir/@Model.Link.ShortLink">@Model.Link.ShortLink</a></td>
+                    </tr>
+                    <tr>
+                        <td>تعداد بازدید</td>
+                        <td>@Model.Statics.Count</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <footer>
+        <a href="#" class="modalLink" onclick="openModal()">درباره لینک</a>
+        <a target="_blank" href="https://darianmh.ir">داریان mh</a>
+        <a target="_blank" href="https://darianteam.ir">تیم داریان</a>
+        <a target="_blank" href="https://coffeebede.ir/darianmh">یه قهوه برام بخر</a>
+    </footer>
+    <input class="" readonly id="Short_Link" />
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/js/HomeScript.js"></script>
+</body>
+</html>
