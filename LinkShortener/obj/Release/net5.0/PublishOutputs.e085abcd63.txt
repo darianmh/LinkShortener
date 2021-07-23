@@ -4,6 +4,7 @@ E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\wwwroot\cs
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\wwwroot\css\LinkRedirect.css
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\wwwroot\css\site.css
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\wwwroot\favicon.ico
+E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\wwwroot\icon.png
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\wwwroot\js\HomeScript.js
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\wwwroot\js\site.js
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css

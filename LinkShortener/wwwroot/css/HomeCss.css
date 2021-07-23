@@ -10,7 +10,7 @@
 
 *, *:before, *:after {
     -webkit-tap-highlight-color: transparent;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     user-select: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -36,14 +36,14 @@ main {
     padding: 0 26px;
     width: 100%;
     height: 100%;
-    background: rgba(8,51,16,1);
-    background: -moz-linear-gradient(-45deg, rgba(8,51,16,1) 0%, rgba(65,103,168,1) 100%);
-    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(8,51,16,1)), color-stop(100%, rgba(65,103,168,1)));
-    background: -webkit-linear-gradient(-45deg, rgba(8,51,16,1) 0%, rgba(65,103,168,1) 100%);
-    background: -o-linear-gradient(-45deg, rgba(8,51,16,1) 0%, rgba(65,103,168,1) 100%);
-    background: -ms-linear-gradient(-45deg, rgba(8,51,16,1) 0%, rgba(65,103,168,1) 100%);
-    background: linear-gradient(135deg, rgba(8,51,16,1) 0%, rgba(65,103,168,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9a39a3', endColorstr='#4167a8', GradientType=1 );
+    background: rgba(8, 51, 16, 1);
+    background: -moz-linear-gradient(-45deg, rgba(8, 51, 16, 1) 0%, rgba(65, 103, 168, 1) 100%);
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(8, 51, 16, 1)), color-stop(100%, rgba(65, 103, 168, 1)));
+    background: -webkit-linear-gradient(-45deg, rgba(8, 51, 16, 1) 0%, rgba(65, 103, 168, 1) 100%);
+    background: -o-linear-gradient(-45deg, rgba(8, 51, 16, 1) 0%, rgba(65, 103, 168, 1) 100%);
+    background: -ms-linear-gradient(-45deg, rgba(8, 51, 16, 1) 0%, rgba(65, 103, 168, 1) 100%);
+    background: linear-gradient(135deg, rgba(8, 51, 16, 1) 0%, rgba(65, 103, 168, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#9a39a3', endColorstr='#4167a8', GradientType=1);
 }
 
 h1 {
@@ -57,11 +57,24 @@ h1 {
 
 h2 {
     display: block;
-    margin: 0 auto 60px auto;
+    margin: 0 auto 30px auto;
     text-align: center;
     font-weight: 400;
     font-size: 1.25em;
     letter-spacing: -0.015em;
+}
+
+h6 {
+    display: block;
+    text-align: center;
+    letter-spacing: -0.015em;
+    margin: 0 auto 20px auto;
+}
+
+.link {
+    color: #b0afff !important;
+    font-size: 15px;
+    padding: 3px;
 }
 
 .container {
@@ -188,7 +201,7 @@ h2 {
     height: 100%;
     border-radius: 120px;
     border: none;
-    background: rgba(255,255,255,0);
+    background: rgba(255, 255, 255, 0);
     padding: 0 68px 0 68px;
     color: #FFFFFF;
     font-size: 1.32em;
@@ -215,12 +228,12 @@ h2 {
 
     #search::-moz-selection {
         color: #FFFFFF;
-        background: rgba(0,0,0,0.25);
+        background: rgba(0, 0, 0, 0.25);
     }
 
     #search::selection {
         color: #FFFFFF;
-        background: rgba(0,0,0,0.25);
+        background: rgba(0, 0, 0, 0.25);
     }
 
 footer {
@@ -273,6 +286,7 @@ footer {
 /*modal*/
 
 /* The Modal (background) */
+
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -283,11 +297,12 @@ footer {
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 /* Modal Content */
+
 .modal-content {
     background-color: #2c303a;
     margin: auto;
@@ -295,13 +310,17 @@ footer {
     border: 1px solid #888;
     width: 50%;
 }
+
     /* modal text */
+
     .modal-content p {
         line-height: 1.2;
         font-size: 14px;
         padding: 5px;
     }
+
 /* The Close Button */
+
 .close {
     color: #aaaaaa;
     /*float: right;*/
@@ -315,6 +334,7 @@ footer {
         text-decoration: none;
         cursor: pointer;
     }
+
 /*end modal*/
 
 .pointer {
@@ -322,10 +342,20 @@ footer {
 }
 
 /* loader */
+
 .loader {
     width: 100%;
     height: 100%;
     position: fixed;
     background-color: #210a0ad9;
     top: 0;
+}
+
+.Statics_container {
+    background-color: #2c303a;
+}
+
+.Statics_row {
+    padding: 15px;
+    text-align: center;
 }

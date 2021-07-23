@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 using LinkShortener.Data.Link;
 using LinkShortener.Models.Api;
 using LinkShortener.Services.Helper;
@@ -37,6 +38,7 @@ namespace LinkShortener.Controllers
                 Ok = false,
                 Error = "Link is not in correct format"
             };
+            link = FormatLink(link);
             //check link
             var checkLink = Helper.CheckLink(link);
             if (!checkLink) return new ApiResponse<Link>()
@@ -59,9 +61,20 @@ namespace LinkShortener.Controllers
                 Data = linkModel
             };
         }
+
+
         #endregion
         #region Utilities
 
+        /// <summary>
+        /// link is convert from serialized to deserialized format
+        /// </summary>
+        /// <param name="link"></param>
+        /// <returns></returns>
+        private string FormatLink(string link)
+        {
+            return HttpUtility.UrlDecode(link);
+        }
 
         #endregion
         #region Ctor

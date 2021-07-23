@@ -1,0 +1,77 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" type="image/jpg" href="~/icon.png" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>داریان - لینک دات آی آر</title>
+    <meta name="keywords" content="لینک, کوتاه,فشرده,خلاصه,کوتاه سازی,لینک سازی,link,link shortener,ls1,لینک دات آی آر,داریان,darian,darian mh,سئو" />
+    <meta name="description" content="لینک دات آی آر یک محصول از داریان است.محصولی ساده و روان برای خلاصه سازی لینک های شما." />
+    <link href="~/lib/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/css/HomeCss.css" rel="stylesheet" asp-append-version="true" />
+</head>
+<body dir="rtl">
+
+    <main>
+        <div class="container">
+            <h1><a href="https://ls1.ir">لینک دات آی آر</a></h1>
+            <h2>مختصر و مفید <i class="fa fa-question-circle modalLink pointer" onclick="openModal()"></i></h2>
+            @RenderBody()
+
+        </div>
+    </main>
+    <footer>
+        <a href="#" class="modalLink" onclick="openModal()">درباره لینک</a>
+        <a target="_blank" href="https://darianmh.ir">داریان mh</a>
+        <a target="_blank" href="https://darianteam.ir">تیم داریان</a>
+        <a target="_blank" href="https://coffeebede.ir/darianmh">یه قهوه برام بخر</a>
+        <a target="_blank" asp-action="App">نرم افزار</a>
+    </footer>
+    <input class="" readonly id="Short_Link" />
+
+    @* modal *@
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <hr />
+            <p>
+                لینک دات آی آر یک محصول از
+                <b>داریان</b>
+                .محصولی ساده و روان برای خلاصه سازی لینک های شما.
+            </p>
+            <p>برای استفاده از محصول تنها کافیست لینک اصلی را در اینپوت صفحه وارد کنید. پس از فشرده کلید اینتر. لینک را از قسمت پایینی کپی کنید.</p>
+            <p>
+                همچنین شما می توانید با وارد کرد علامت '$' در بعد از لینک خلاصه شده خود. آمار بازدید لینک را نیز مشاده نمایید.
+                <span>(https://ls1/214C8$)</span>
+            </p>
+            <p>پیشاپیش از همایت های شما تشکر می کنیم.</p>
+        </div>
+
+    </div>
+    @* end modal *@
+    <div class="loader hidden"></div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/js/HomeScript.js" asp-append-version="true"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-37H2B8QSLS"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-37H2B8QSLS');
+    </script>
+    @await RenderSectionAsync("scripts", false)
+</body>
+</html>

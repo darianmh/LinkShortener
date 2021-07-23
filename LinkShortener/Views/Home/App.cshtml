@@ -1,0 +1,26 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_MyLayout";
+}
+<p>دانلود نرم افزار به صورت خودکار آغاز خواهد. اگر بعد از 5 ثانیه دانلود آغاز نشد، 
+    <a asp-action="Download" class="link">اینجا کلیک کنید.</a>
+    </p>
+<p>
+    نرم افزار 
+    <b>لینک دات آی آر</b>
+    یک نرم افزار سریع و کابردی برای آسایش شماست. شما با این نرم افزار به راحتی و با سرعت می توانید لینک های خود تبدیل به یک لینک کوتاه و مختصر تبدیل کنید.
+</p>
+<p>با 
+    <a asp-action="Index" class="link">داریان</a>
+    همراه باشید</p>
+
+@section scripts
+{
+    <script>
+        setTimeout(function () {
+            window.location.href = "/Home/Download";
+        }, 5000)
+    </script>
+}

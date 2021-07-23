@@ -22,22 +22,34 @@
 
     <main>
         <div class="container">
-            <table class="table table-striped table-dark">
-                <tbody>
-                    <tr>
-                        <td>لینک اصلی</td>
-                        <td><a target="_blank" href="https://ls1.ir/@Model.Link.MainLink">لینک کوتاه@Model.Link.MainLink</a></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><a target="_blank" href="https://ls1.ir/@Model.Link.ShortLink">@Model.Link.ShortLink</a></td>
-                    </tr>
-                    <tr>
-                        <td>تعداد بازدید</td>
-                        <td>@Model.Statics.Count</td>
-                    </tr>
-                </tbody>
-            </table>
+            <h1><a href="https://ls1.ir">لینک دات آی آر</a></h1>
+            <h6>کوتاه کننده لینک</h6>
+            <div class="container Statics_container">
+                <div class="row Statics_row">
+                    <div class="col">
+                        لینک اصلی
+                    </div>
+                    <div class="col">
+                        <a target="_blank" href="@Model.Link.MainLink">@Model.Link.MainLink</a>
+                    </div>
+                </div>
+                <div class="row Statics_row">
+                    <div class="col">
+                        لینک کوتاه
+                    </div>
+                    <div class="col">
+                        <a target="_blank" href="https://ls1.ir/@Model.Link.ShortLink">@Model.Link.ShortLink</a>
+                    </div>
+                </div>
+                <div class="row Statics_row">
+                    <div class="col">
+                        تعداد بازدید
+                    </div>
+                    <div class="col">
+                        @Model.Statics.Count
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
     <footer>
@@ -46,6 +58,29 @@
         <a target="_blank" href="https://darianteam.ir">تیم داریان</a>
         <a target="_blank" href="https://coffeebede.ir/darianmh">یه قهوه برام بخر</a>
     </footer>
+
+    @* modal *@
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <hr />
+            <p>
+                لینک دات آی آر یک محصول از
+                <b>داریان</b>
+                .محصولی ساده و روان برای خلاصه سازی لینک های شما.
+            </p>
+            <p>برای استفاده از محصول تنها کافیست لینک اصلی را در اینپوت صفحه وارد کنید. پس از فشرده کلید اینتر. لینک را از قسمت پایینی کپی کنید.</p>
+            <p>
+                همچنین شما می توانید با وارد کرد علامت '$' در بعد از لینک خلاصه شده خود. آمار بازدید لینک را نیز مشاده نمایید.
+                <span>(https://ls1/214C8$)</span>
+            </p>
+            <p>پیشاپیش از همایت های شما تشکر می کنیم.</p>
+        </div>
+
+    </div>
+    @* end modal *@
     <input class="" readonly id="Short_Link" />
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

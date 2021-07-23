@@ -145,3 +145,5 @@ E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\LinkShortener.dll
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\ref\LinkShortener.dll
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\LinkShortener.pdb
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\LinkShortener.genruntimeconfig.cache
+E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\Razor\Views\Home\App.cshtml.g.cs
+E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\Razor\Views\Shared\_MyLayout.cshtml.g.cs

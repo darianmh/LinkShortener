@@ -30,6 +30,7 @@ function getLink() {
   startLoading();
   var userLink = $('#search').val();
   if (userLink === null || userLink === '') return MyAlert('لینک معتبر نمی باشد.');
+  userLink = encodeURIComponent(userLink);
   var url = '/api/links/' + userLink;
   $.ajax({
     url: url,

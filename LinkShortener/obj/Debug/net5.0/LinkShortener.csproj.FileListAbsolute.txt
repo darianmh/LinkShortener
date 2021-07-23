@@ -145,3 +145,5 @@ E:\Projects\LinkShortener\LinkShortener\bin\Debug\net5.0\runtimes\win-arm\lib\ne
 E:\Projects\LinkShortener\LinkShortener\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 E:\Projects\LinkShortener\LinkShortener\obj\Debug\net5.0\Razor\Views\Rout\Index.cshtml.g.cs
 E:\Projects\LinkShortener\LinkShortener\obj\Debug\net5.0\Razor\Views\Rout\Statics.cshtml.g.cs
+E:\Projects\LinkShortener\LinkShortener\obj\Debug\net5.0\Razor\Views\Shared\_MyLayout.cshtml.g.cs
+E:\Projects\LinkShortener\LinkShortener\obj\Debug\net5.0\Razor\Views\Home\App.cshtml.g.cs
