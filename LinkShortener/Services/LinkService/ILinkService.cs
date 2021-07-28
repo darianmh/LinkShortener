@@ -3,11 +3,18 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using LinkShortener.Data.Link;
+using LinkShortener.Models.Link;
+using LinkShortener.Services.Statics;
 
 namespace LinkShortener.Services.LinkService
 {
     public interface ILinkService
     {
+        /// <summary>
+        /// get all links
+        /// </summary>
+        /// <returns></returns>
+        Task<List<Link>> GetAllLinksAsync();
         /// <summary>
         /// create new model and inserts in db
         /// </summary>
@@ -33,5 +40,22 @@ namespace LinkShortener.Services.LinkService
         /// <param name="shortLink">short link</param>
         /// <returns>link model</returns>
         Link GetByShortLink(string shortLink);
+
+        /// <summary>
+        /// convert link db model to custom model for admin panel
+        /// </summary>
+        /// <param name="links"></param>
+        /// <param name="staticsService"></param>
+        /// <returns></returns>
+        Task<List<AdminLinkModel>> ToAdminLinkModel(List<Link> links, IStaticsService staticsService);
+
+        /// <summary>
+        /// convert link db model to custom model for admin panel
+        /// </summary>
+        /// <param name="link"></param>
+        /// <param name="staticsService"></param>
+        /// <param name="links"></param>
+        /// <returns></returns>
+        Task<AdminLinkModel> ToAdminLinkModel(Link link, IStaticsService staticsService);
     }
 }

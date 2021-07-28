@@ -9,7 +9,7 @@ namespace LinkShortener.Models
 {
     public class StaticModel
     {
-        public Link Link { get; set; }
+        public Data.Link.Link Link { get; set; }
         public List<Statics> Statics { get; set; }
     }
 }

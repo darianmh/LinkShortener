@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LinkShortener.Data;
 using LinkShortener.Data.Link;
+using LinkShortener.Models.Link;
+using LinkShortener.Services.Statics;
 using Microsoft.EntityFrameworkCore;
 
 namespace LinkShortener.Services.LinkService
@@ -16,6 +19,13 @@ namespace LinkShortener.Services.LinkService
 
         #endregion
         #region Methods
+
+        /// <inheritdoc/>
+        public async Task<List<Link>> GetAllLinksAsync()
+        {
+            return await _db.Links.ToListAsync();
+        }
+
         /// <inheritdoc/>
         public async Task<Link> Create(string mainLink, int length = 5)
         {
@@ -61,6 +71,32 @@ namespace LinkShortener.Services.LinkService
                x.ShortLink.Equals(shortLink));
         }
 
+        /// <inheritdoc/>
+        public async Task<List<AdminLinkModel>> ToAdminLinkModel(List<Link> links, IStaticsService staticsService)
+        {
+            var tempList = new List<AdminLinkModel>();
+            foreach (var link in links)
+            {
+                var temp = await ToAdminLinkModel(link, staticsService);
+                if (temp != null) tempList.Add(temp);
+            }
+            return tempList;
+        }
+
+        /// <inheritdoc/>
+        public async Task<AdminLinkModel> ToAdminLinkModel(Link link, IStaticsService staticsService)
+        {
+            var model = new AdminLinkModel()
+            {
+                MainLink = link.MainLink,
+                CreateDateTime = link.CreateDateTime,
+                ShortLink = link.ShortLink,
+                VisitCount = await GetVisitCount(link, staticsService)
+            };
+            return model;
+        }
+
+
         #endregion
         #region Utilities
         /// <summary>
@@ -97,6 +133,18 @@ namespace LinkShortener.Services.LinkService
             //will exit when link is unique ( if check is true that means link exists in db )
             while (check);
             return lnk;
+        }
+
+        /// <summary>
+        /// get visit count from IStaticsService
+        /// </summary>
+        /// <param name="link"></param>
+        /// <param name="staticsService"></param>
+        /// <returns></returns>
+        private async Task<int> GetVisitCount(Link link, IStaticsService staticsService)
+        {
+            var statics = await staticsService.GetStatics(link.ShortLink);
+            return statics?.Count ?? 0;
         }
 
         #endregion

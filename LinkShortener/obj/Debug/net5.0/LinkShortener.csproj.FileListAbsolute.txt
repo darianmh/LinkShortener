@@ -147,3 +147,4 @@ E:\Projects\LinkShortener\LinkShortener\obj\Debug\net5.0\Razor\Views\Rout\Index.
 E:\Projects\LinkShortener\LinkShortener\obj\Debug\net5.0\Razor\Views\Rout\Statics.cshtml.g.cs
 E:\Projects\LinkShortener\LinkShortener\obj\Debug\net5.0\Razor\Views\Shared\_MyLayout.cshtml.g.cs
 E:\Projects\LinkShortener\LinkShortener\obj\Debug\net5.0\Razor\Views\Home\App.cshtml.g.cs
+E:\Projects\LinkShortener\LinkShortener\obj\Debug\net5.0\Razor\Views\AllLinks\Index.cshtml.g.cs

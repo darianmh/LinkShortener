@@ -1,0 +1,23 @@
+﻿@model List<LinkShortener.Models.Link.AdminLinkModel>
+
+@{
+    Layout = "_MyLayout";
+}
+
+
+<div class="container Statics_container">
+    @foreach (var item in Model)
+    {
+        <div class="row Statics_row">
+            <div class="col">
+                <a target="_blank" href="@item.MainLink"> @item.MainLink</a>
+            </div>
+            <div class="col">
+                <a target="_blank" href="@item.ShortLink"> @item.ShortLink</a>
+            </div>
+            <div class="col">
+                @item.VisitCount
+            </div>
+        </div>
+    }
+</div>
