@@ -47,7 +47,7 @@ namespace LinkShortener.Controllers
                 Error = "Link is not in correct format"
             };
             //create link
-            var linkModel = await _linkService.Create(link);
+            var linkModel = await _linkService.Create(link, HttpContext);
             //if null => something is wrong and link did not create
             if (linkModel == null) return new ApiResponse<Link>()
             {

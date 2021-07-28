@@ -6,6 +6,8 @@ using LinkShortener.Data;
 using LinkShortener.Data.Link;
 using LinkShortener.Models.Link;
 using LinkShortener.Services.Statics;
+using LinkShortener.Services.User;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
 namespace LinkShortener.Services.LinkService
@@ -15,6 +17,7 @@ namespace LinkShortener.Services.LinkService
         #region Fields
 
         private readonly ApplicationDbContext _db;
+        private readonly ApplicationUserManager _applicationUserManager;
 
 
         #endregion
@@ -27,7 +30,7 @@ namespace LinkShortener.Services.LinkService
         }
 
         /// <inheritdoc/>
-        public async Task<Link> Create(string mainLink, int length = 5)
+        public async Task<Link> Create(string mainLink, HttpContext httpContext, int length = 4)
         {
             mainLink = Correct(mainLink);
             mainLink = mainLink.ToUpper();
@@ -37,7 +40,9 @@ namespace LinkShortener.Services.LinkService
                 {
                     CreateDateTime = DateTime.Now,
                     MainLink = mainLink,
-                    ShortLink = await GetNewShortLink(length)
+                    ShortLink = await GetNewShortLink(length),
+                    IpV4 = GetIpV4(httpContext),
+                    UserId = GetUserId(httpContext)
                 };
                 await _db.Links.AddAsync(model);
                 await _db.SaveChangesAsync();
@@ -48,6 +53,8 @@ namespace LinkShortener.Services.LinkService
                 return null;
             }
         }
+
+
         /// <inheritdoc/>
         public async Task<bool> CheckShortLink(string shortLink)
         {
@@ -100,6 +107,25 @@ namespace LinkShortener.Services.LinkService
         #endregion
         #region Utilities
         /// <summary>
+        /// if user is logged in with put user id in db data
+        /// </summary>
+        /// <param name="httpContext"></param>
+        /// <returns></returns>
+        private int? GetUserId(HttpContext httpContext)
+        {
+            return _applicationUserManager.GetUserId(httpContext.User);
+        }
+        /// <summary>
+        /// set user ip address for later usage
+        /// </summary>
+        /// <param name="httpContext"></param>
+        /// <returns></returns>
+        private string GetIpV4(HttpContext httpContext)
+        {
+            return httpContext.Connection.RemoteIpAddress?.ToString();
+        }
+
+        /// <summary>
         /// fix link format
         /// </summary>
         /// <param name="mainLink">link</param>
@@ -150,9 +176,10 @@ namespace LinkShortener.Services.LinkService
         #endregion
         #region Ctor
 
-        public LinkService(ApplicationDbContext db)
+        public LinkService(ApplicationDbContext db, ApplicationUserManager applicationUserManager)
         {
             _db = db;
+            _applicationUserManager = applicationUserManager;
         }
         #endregion
 

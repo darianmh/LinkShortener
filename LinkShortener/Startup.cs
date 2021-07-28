@@ -10,8 +10,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using LinkShortener.Classes;
 using LinkShortener.Data;
+using LinkShortener.Data.User;
 using LinkShortener.Services.LinkService;
 using LinkShortener.Services.Statics;
+using LinkShortener.Services.User;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 
@@ -35,6 +38,14 @@ namespace LinkShortener
             //add services
             services.AddTransient<ILinkService, LinkService>();
             services.AddTransient<IStaticsService, StaticsService>();
+            //identity service
+            services.AddIdentityCore<ApplicationUser>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddRoles<ApplicationRole>()
+                .AddRoleStore<ApplicationRoleStore>()
+                .AddUserManager<ApplicationUserManager>()
+                .AddRoleManager<ApplicationRoleManager>();
+
             //routing services (registering LinkConstraint)
             services.Configure<RouteOptions>(routeOptions =>
             {

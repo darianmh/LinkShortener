@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using LinkShortener.Data.Link;
 using LinkShortener.Models.Link;
 using LinkShortener.Services.Statics;
+using Microsoft.AspNetCore.Http;
 
 namespace LinkShortener.Services.LinkService
 {
@@ -15,13 +16,15 @@ namespace LinkShortener.Services.LinkService
         /// </summary>
         /// <returns></returns>
         Task<List<Link>> GetAllLinksAsync();
+
         /// <summary>
         /// create new model and inserts in db
         /// </summary>
         /// <param name="mainLink">main link url</param>
+        /// <param name="httpContext"></param>
         /// <param name="length">length of short link between 0 and 32 chars</param>
         /// <returns>link model if success and null if fail</returns>
-        Task<Link> Create(string mainLink, int length = 5);
+        Task<Link> Create(string mainLink, HttpContext httpContext, int length = 5);
         /// <summary>
         /// checks short link exist
         /// case is not important
