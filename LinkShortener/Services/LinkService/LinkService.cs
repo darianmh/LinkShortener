@@ -33,7 +33,8 @@ namespace LinkShortener.Services.LinkService
         public async Task<Link> Create(string mainLink, HttpContext httpContext, int length = 4)
         {
             mainLink = Correct(mainLink);
-            mainLink = mainLink.ToUpper();
+            //this causes problems in case sensitive problem like 'https://hbr.org/2012/11/the-management-century'
+            //mainLink = mainLink.ToUpper();
             try
             {
                 var model = new Link()
