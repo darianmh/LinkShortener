@@ -7,6 +7,8 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
 using System.Threading.Tasks;
 using LinkShortener.Classes;
 using LinkShortener.Data;
@@ -45,6 +47,11 @@ namespace LinkShortener
                 .AddRoleStore<ApplicationRoleStore>()
                 .AddUserManager<ApplicationUserManager>()
                 .AddRoleManager<ApplicationRoleManager>();
+
+            //unicode
+            services.AddSingleton<HtmlEncoder>(
+                HtmlEncoder.Create(allowedRanges: new[] { UnicodeRanges.BasicLatin,
+                    UnicodeRanges.Arabic }));
 
             //routing services (registering LinkConstraint)
             services.Configure<RouteOptions>(routeOptions =>

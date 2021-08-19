@@ -31,11 +31,11 @@ namespace LinkShortener.Controllers
             var linkCheck = HttpContext.Items.TryGetValue("LinkObject", out object? item);
             if (!linkCheck) return NotFound();
             //get CheckStatic object
-            HttpContext.Items.TryGetValue("CheckStatic", out object? CheckStatic);
+            HttpContext.Items.TryGetValue("CheckStatic", out object? checkStatic);
             //get the right object
             var linkObject = GetLinkObject(item);
             if (linkObject == null) return NotFound();
-            if (CheckStatic != null && ((bool)CheckStatic)) return RedirectToAction("Statics", new { shortLink = linkObject.ShortLink });
+            if (checkStatic != null && ((bool)checkStatic)) return RedirectToAction("Statics", new { shortLink = linkObject.ShortLink });
             return View(linkObject);
         }
 
