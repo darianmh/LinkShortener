@@ -1,0 +1,53 @@
+﻿@using LinkShortener.Models.Link
+@model LinkShortener.Models.Link.ShowAllLinksSortModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+<form id="linkFilter" method="get" class="row Statics_row">
+    <input type="hidden" name="pageNumber" value="@Model.CurrentPage" />
+    <div class="col2">
+        @switch (Model.SortBy)
+        {
+            case SortBy.Date:
+                {
+                    <label for="date">تاریخ</label>
+                    <input type="radio" name="sortBy" id="date" value="0" checked="checked" onchange="redirectLinksFilter()" />
+                    <label for="visitCount">محبوبیت</label>
+                    <input type="radio" name="sortBy" id="visitCount" value="1" onchange="redirectLinksFilter()" />
+                    break;
+                }
+            case SortBy.VisitCount:
+                {
+                    <label for="date">تاریخ</label>
+                    <input type="radio" name="sortBy" id="date" value="0" onchange="redirectLinksFilter()" />
+                    <label for="visitCount">محبوبیت</label>
+                    <input type="radio" name="sortBy" id="visitCount" value="1" checked="checked" onchange="redirectLinksFilter()" />
+                    break;
+                }
+        }
+    </div>
+    <div class="col2">
+        @switch (Model.SortType)
+        {
+            case SortType.Ascending:
+                {
+                    <label for="asc">صعودی</label>
+                    <input type="radio" name="sortType" id="asc" value="0" checked="checked" onchange="redirectLinksFilter()" />
+                    <label for="dsc">نزولی</label>
+                    <input type="radio" name="sortType" id="dsc" value="1" onchange="redirectLinksFilter()" />
+                    break;
+                }
+            case SortType.Descending:
+                {
+                    <label for="asc">صعودی</label>
+                    <input type="radio" name="sortType" id="asc" value="0" onchange="redirectLinksFilter()" />
+                    <label for="dsc">نزولی</label>
+                    <input type="radio" name="sortType" id="dsc" value="1" checked="checked" onchange="redirectLinksFilter()" />
+                    break;
+                }
+        }
+    </div>
+</form>

@@ -43,7 +43,6 @@ namespace LinkShortener.Services.Helper
             return result;
         }
 
-
         #endregion
         #region Utilities
 

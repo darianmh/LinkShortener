@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace LinkShortener.Models.Link
 {
-    public class AdminLinkModel
+    public class AdminLinkModel : BaseLinkModel
     {
-        public string ShortLink { get; set; }
-        public string MainLink { get; set; }
-        public DateTime CreateDateTime { get; set; }
+        public AdminLinkModel(BaseLinkModel baseModel) : base(baseModel)
+        {
+        }
+
         public int VisitCount { get; set; }
     }
 }

@@ -1,9 +1,8 @@
-﻿@model LinkShortener.Models.Link.ShowAllLinksModel<LinkShortener.Models.Link.AdminLinkModel>
+﻿@model LinkShortener.Models.Link.ShowAllLinksModel<LinkShortener.Models.Link.GlobalLinkModel>
 
 @{
     Layout = "_MyLayout";
 }
-
 
 <div class="container Statics_container">
     <partial name="_LinkSortPartial" model="Model.SortModel" />
@@ -12,14 +11,11 @@
     @foreach (var item in Model.AllLinks)
     {
         <div class="row Statics_row">
-            <div class="col3">
-                <a target="_blank" href="@item.MainLink"> @item.MainLink</a>
+            <div class="col2">
+                <a target="_blank" href="@item.MainLink"> @item.MetaTitleModel</a>
             </div>
-            <div class="col3">
+            <div class="col2">
                 <a target="_blank" href="@item.ShortLink"> @item.ShortLink</a>
-            </div>
-            <div class="col3">
-                @item.VisitCount
             </div>
         </div>
     }

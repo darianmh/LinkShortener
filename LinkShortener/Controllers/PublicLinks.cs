@@ -1,19 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using LinkShortener.Data.Link;
 using LinkShortener.Models.Link;
 using LinkShortener.Services.LinkService;
 using LinkShortener.Services.Statics;
-using Microsoft.AspNetCore.Mvc;
 
-namespace LinkShortener.Controllers.Admin
+namespace LinkShortener.Controllers
 {
-    public class AllLinksController : Controller
+    public class PublicLinks : Controller
     {
         #region Fields
 
         private readonly ILinkService _linkService;
-        private readonly IStaticsService _staticsService;
 
 
         #endregion
@@ -21,7 +22,7 @@ namespace LinkShortener.Controllers.Admin
 
         public IActionResult Index(SortType sortType = SortType.Descending, SortBy sortBy = SortBy.Date, int pageNumber = 1)
         {
-            var links = _linkService.GetAllLinksShowModelAsync(sortBy, sortType, pageNumber);
+            var links = _linkService.GetGlobalLinksShowModelAsync(sortBy, sortType, pageNumber);
             return View(links);
         }
         #endregion
@@ -32,13 +33,11 @@ namespace LinkShortener.Controllers.Admin
         #region Ctor
 
 
-        public AllLinksController(ILinkService linkService, IStaticsService staticsService)
+        public PublicLinks(ILinkService linkService)
         {
             _linkService = linkService;
-            _staticsService = staticsService;
         }
         #endregion
-
 
     }
 }

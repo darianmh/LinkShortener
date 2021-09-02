@@ -18,7 +18,23 @@ namespace LinkShortener.Data.Link
         [ForeignKey("User")]
         public int? UserId { get; set; }
         public string IpV4 { get; set; }
+        /// <summary>
+        /// is public to show in global link viewer
+        /// </summary>
+        public bool IsPublic { get; set; }
+        /// <summary>
+        /// showing headers info like meta tags and keywords
+        /// </summary>
+        public string HeaderText { get; set; }
 
+        /// <summary>
+        /// auto generated from header meta title
+        /// </summary>
+        public string LinkTitle { get; set; }
+        /// <summary>
+        /// holds total visit count => in future we should replace db with nosql to improve performance 
+        /// </summary>
+        public int TotalVisitCount { get; set; }
         //np
         public virtual ApplicationUser User { get; set; }
     }

@@ -1,4 +1,4 @@
-﻿@model LinkShortener.Data.Link.Link
+﻿@model LinkShortener.Models.Link.LinkRedirectModel
 
 @{
 	Layout = null;
@@ -9,8 +9,8 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>@Model.MainLink</title>
 	<link href="~/css/LinkRedirect.css" rel="stylesheet" />
+	@Html.Raw(Model.Header)
 </head>
 <body dir="rtl">
 	<div class="text">

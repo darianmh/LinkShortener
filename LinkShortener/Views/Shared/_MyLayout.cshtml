@@ -23,7 +23,6 @@
     <main>
         <div class="container">
             <h1><a href="https://ls1.ir">لینک دات آی آر</a></h1>
-            <h1><a asp-area="Identity" asp-page="/Account/Login">لینک دات آی آر</a></h1>
             <h2>مختصر و مفید <i class="fa fa-question-circle modalLink pointer" onclick="openModal()"></i></h2>
             @RenderBody()
 
@@ -35,6 +34,7 @@
         <a target="_blank" href="https://darianteam.ir">تیم داریان</a>
         <a target="_blank" href="https://coffeebede.ir/darianmh">یه قهوه برام بخر</a>
         <a target="_blank" asp-action="App">نرم افزار</a>
+        <a target="_blank" asp-action="Index" asp-controller="PublicLinks">لینک های عمومی</a>
     </footer>
     <input class="" readonly id="Short_Link" />
 
@@ -64,6 +64,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="~/js/HomeScript.js" asp-append-version="true"></script>
+    <script src="~/js/MyScript.js" asp-append-version="true"></script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-37H2B8QSLS"></script>

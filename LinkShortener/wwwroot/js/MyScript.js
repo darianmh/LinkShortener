@@ -1,0 +1,4 @@
+﻿
+function redirectLinksFilter() {
+  $("#linkFilter").submit();
+}

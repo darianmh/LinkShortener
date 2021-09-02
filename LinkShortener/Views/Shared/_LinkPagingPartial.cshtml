@@ -1,0 +1,26 @@
+﻿@model LinkShortener.Models.Link.ShowAllLinksSortModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+<div class="row Statics_row">
+    <a asp-route-sortType="@((int) Model.SortType)"
+       asp-route-sortBy="@((int) Model.SortBy)"
+       asp-route-pageNumber="@(Model.CurrentPage-1)"
+       class="btn btn-dark">قبلی</a>
+    @for (var i = 1; i <= Model.AllPages; i++)
+    {
+        var check = i == Model.CurrentPage;
+        var btn = check ? "btn-info" : "btn-dark";
+        <a asp-route-sortType="@((int) Model.SortType)"
+           asp-route-sortBy="@((int) Model.SortBy)"
+           asp-route-pageNumber="@i"
+           class="btn @btn">@i</a>
+    }
+    <a asp-route-sortType="@((int) Model.SortType)"
+       asp-route-sortBy="@((int) Model.SortBy)"
+       asp-route-pageNumber="@(Model.CurrentPage+1)"
+       class="btn btn-dark">بعدی</a>
+</div>

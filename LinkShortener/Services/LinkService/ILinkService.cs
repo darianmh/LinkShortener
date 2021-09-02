@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Threading.Tasks;
 using LinkShortener.Data.Link;
 using LinkShortener.Models.Link;
@@ -16,6 +15,11 @@ namespace LinkShortener.Services.LinkService
         /// </summary>
         /// <returns></returns>
         Task<List<Link>> GetAllLinksAsync();
+        /// <summary>
+        /// get all public links
+        /// </summary>
+        /// <returns></returns>
+        Task<List<Link>> GetAllPublicLinksAsync();
 
         /// <summary>
         /// create new model and inserts in db
@@ -60,5 +64,52 @@ namespace LinkShortener.Services.LinkService
         /// <param name="links"></param>
         /// <returns></returns>
         Task<AdminLinkModel> ToAdminLinkModel(Link link, IStaticsService staticsService);
+        /// <summary>
+        /// convert link db model to custom model for admin panel
+        /// </summary>
+        /// <param name="links"></param>
+        /// <returns></returns>
+        List<AdminLinkModel> ToAdminLinkModel(List<Link> links);
+
+        /// <summary>
+        /// convert link db model to custom model for admin panel
+        /// </summary>
+        /// <param name="link"></param>
+        /// <returns></returns>
+        AdminLinkModel ToAdminLinkModel(Link link);
+        /// <summary>
+        /// convert link db model to custom model for Global show
+        /// </summary>
+        /// <param name="link"></param>
+        /// <returns></returns>
+        GlobalLinkModel ToGlobalLinkModel(Link link);
+
+        /// <summary>
+        /// convert link db model to custom model for link redirect show
+        /// </summary>
+        /// <param name="link"></param>
+        /// <param name="linkInfoService"></param>
+        /// <returns></returns>
+        LinkRedirectModel ToLinkRedirectModel(Link link);
+        /// <summary>
+        /// convert link db model to custom model for Global show
+        /// </summary>
+        /// <returns></returns>
+        List<GlobalLinkModel> ToGlobalLinkModel(List<Link> links);
+        /// <summary>
+        /// update link model to db
+        /// </summary>
+        /// <param name="link"></param>
+        void Update(Link link);
+
+        ShowAllLinksModel<AdminLinkModel> GetAllLinksShowModelAsync(SortBy sortBy, SortType sortType, int pageNumber);
+        ShowAllLinksModel<GlobalLinkModel> GetGlobalLinksShowModelAsync(SortBy sortBy, SortType sortType,
+            int pageNumber);
+        /// <summary>
+        /// find link with short link ask no tracking from db
+        /// </summary>
+        /// <param name="routString"></param>
+        /// <returns></returns>
+        Link GetByShortLinkNoTrack(string? routString);
     }
 }

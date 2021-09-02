@@ -42,7 +42,7 @@ namespace LinkShortener.Classes
                         httpContext.Items.TryAdd("LinkObject", link);
                         httpContext.Items.TryAdd("CheckStatic", checkStatic);
                         //log link visit
-                        CreateVisitLog(link, httpContext);
+                        CreateVisitLog(link, httpContext, linkService);
                         return true;
                     }
                 }
@@ -50,15 +50,31 @@ namespace LinkShortener.Classes
 
             return false;
         }
+
         /// <summary>
         /// get and save client ip address that visited the link
         /// </summary>
         /// <param name="link"></param>
         /// <param name="httpContext"></param>
-        private void CreateVisitLog(Link link, HttpContext httpContext)
+        /// <param name="linkService"></param>
+        private void CreateVisitLog(Link link, HttpContext httpContext, ILinkService linkService)
         {
+            //update link
+            UpdateLinkVisitCount(link, linkService);
+
+            //add visit log record to db
             var staticService = (IStaticsService)httpContext.RequestServices.GetService(typeof(IStaticsService));
             staticService?.Insert(link.ShortLink, httpContext.Connection.RemoteIpAddress?.ToString());
+        }
+        /// <summary>
+        /// increase and update link visit count
+        /// </summary>
+        /// <param name="link"></param>
+        /// <param name="linkService"></param>
+        private void UpdateLinkVisitCount(Link link, ILinkService linkService)
+        {
+            link.TotalVisitCount += 1;
+            linkService.Update(link);
         }
 
         /// <summary>

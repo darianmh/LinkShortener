@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using LinkShortener.Data.Link;
 using LinkShortener.Models;
+using LinkShortener.Models.Link;
 using LinkShortener.Services.LinkService;
 using LinkShortener.Services.Statics;
 
@@ -25,7 +26,7 @@ namespace LinkShortener.Controllers
         /// when short link found in db, this method will redirect user to the link
         /// </summary>
         /// <returns></returns>
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             //find link item from context
             var linkCheck = HttpContext.Items.TryGetValue("LinkObject", out object? item);
@@ -33,7 +34,7 @@ namespace LinkShortener.Controllers
             //get CheckStatic object
             HttpContext.Items.TryGetValue("CheckStatic", out object? checkStatic);
             //get the right object
-            var linkObject = GetLinkObject(item);
+            var linkObject = await GetLinkObject(item);
             if (linkObject == null) return NotFound();
             if (checkStatic != null && ((bool)checkStatic)) return RedirectToAction("Statics", new { shortLink = linkObject.ShortLink });
             return View(linkObject);
@@ -61,12 +62,14 @@ namespace LinkShortener.Controllers
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        private Link GetLinkObject(object item)
+        private async Task<LinkRedirectModel> GetLinkObject(object item)
         {
             try
             {
                 var linkObject = (Link)item;
-                return linkObject;
+                if (linkObject == null) return null;
+                var linkModel = _linkService.ToLinkRedirectModel(linkObject);
+                return linkModel;
             }
             catch
             {
