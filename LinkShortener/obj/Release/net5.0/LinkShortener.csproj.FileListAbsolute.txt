@@ -176,3 +176,7 @@ E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\Razor\Areas\Identity\
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\Razor\Views\AllLinks\Index.cshtml.g.cs
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+E:\Projects\LinkShortener\LinkShortener\bin\Release\net5.0\HtmlAgilityPack.dll
+E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\Razor\Views\PublicLinks\Index.cshtml.g.cs
+E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\Razor\Views\Shared\_LinkPagingPartial.cshtml.g.cs
+E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\Razor\Views\Shared\_LinkSortPartial.cshtml.g.cs

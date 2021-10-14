@@ -6,6 +6,7 @@ E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\wwwroot\cs
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\wwwroot\favicon.ico
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\wwwroot\icon.png
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\wwwroot\js\HomeScript.js
+E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\wwwroot\js\MyScript.js
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\wwwroot\js\site.js
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
@@ -83,6 +84,7 @@ E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\appsetting
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\LinkShortener.dll
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\LinkShortener.runtimeconfig.json
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\LinkShortener.pdb
+E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\HtmlAgilityPack.dll
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\Humanizer.dll
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\Microsoft.AspNetCore.Cryptography.Internal.dll
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll

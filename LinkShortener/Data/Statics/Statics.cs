@@ -14,5 +14,9 @@ namespace LinkShortener.Data.Statics
         public string ShortLink { get; set; }
         public string IpV4 { get; set; }
         public DateTime CreateTimeTime { get; set; }
+        /// <summary>
+        /// link is clicked in which site
+        /// </summary>
+        public string RefererUrl { get; set; }
     }
 }

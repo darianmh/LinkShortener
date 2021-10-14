@@ -6,6 +6,7 @@ using LinkShortener.Data.Link;
 using LinkShortener.Services.LinkService;
 using LinkShortener.Services.Statics;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Routing;
 
 namespace LinkShortener.Classes
@@ -64,7 +65,7 @@ namespace LinkShortener.Classes
 
             //add visit log record to db
             var staticService = (IStaticsService)httpContext.RequestServices.GetService(typeof(IStaticsService));
-            staticService?.Insert(link.ShortLink, httpContext.Connection.RemoteIpAddress?.ToString());
+            staticService?.Insert(link.ShortLink, httpContext.Connection.RemoteIpAddress?.ToString(),httpContext.Request.Headers["Referer"].ToString());
         }
         /// <summary>
         /// increase and update link visit count

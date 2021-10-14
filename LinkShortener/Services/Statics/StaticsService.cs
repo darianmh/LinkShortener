@@ -18,13 +18,14 @@ namespace LinkShortener.Services.Statics
         #region Methods
 
         /// <inheritdoc/>
-        public async Task Insert(string shortLink, string ip)
+        public async Task Insert(string shortLink, string ip, string refererUrl)
         {
             var model = new Data.Statics.Statics
             {
                 CreateTimeTime = DateTime.Now,
                 IpV4 = ip,
-                ShortLink = shortLink
+                ShortLink = shortLink,
+                RefererUrl = refererUrl
             };
             await _db.Statics.AddAsync(model);
             await _db.SaveChangesAsync();

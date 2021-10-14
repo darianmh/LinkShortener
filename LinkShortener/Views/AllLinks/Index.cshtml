@@ -16,7 +16,8 @@
                 <a target="_blank" href="@item.MainLink"> @item.MainLink</a>
             </div>
             <div class="col3">
-                <a target="_blank" href="@item.ShortLink"> @item.ShortLink</a>
+                @{ var link = $"{item.ShortLink}%24";}
+                <a target="_blank" href="@link"> @item.ShortLink</a>
             </div>
             <div class="col3">
                 @item.VisitCount

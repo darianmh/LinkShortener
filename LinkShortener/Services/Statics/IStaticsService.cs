@@ -8,7 +8,7 @@ namespace LinkShortener.Services.Statics
         /// <summary>
         /// instance insert without any checks
         /// </summary>
-        Task Insert(string shortLink, string ip);
+        Task Insert(string shortLink, string ip, string refererUrl);
         /// <summary>
         /// return all data whit short link address
         /// </summary>
