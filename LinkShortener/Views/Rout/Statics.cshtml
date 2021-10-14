@@ -1,4 +1,5 @@
-﻿@model StaticModel
+﻿@using Newtonsoft.Json
+@model LinkShortener.Models.Statics.StaticModel
 
 @{
     Layout = "_MyLayout";
@@ -8,10 +9,17 @@
 <div class="container Statics_container">
     <div class="row Statics_row">
         <div class="col">
-            لینک اصلی
-        </div>
-        <div class="col">
             <a target="_blank" href="@Model.Link.MainLink">@Model.Link.MainLink</a>
+        </div>
+    </div>
+    <div class="row Statics_row">
+        <div class="col">
+            @Model.Link.LinkTitle
+        </div>
+    </div>
+    <div class="row Statics_row">
+        <div class="col">
+            @Model.Link.Description
         </div>
     </div>
     <div class="row Statics_row">
@@ -27,7 +35,74 @@
             تعداد بازدید
         </div>
         <div class="col">
-            @Model.Statics.Count
+            @Model.TotalVisitCount
         </div>
     </div>
 </div>
+
+
+<div class="container Statics_container pt-3">
+    <h2>آمار براساس بازدید در 30 روز اخیر</h2>
+    <canvas id="dailyChart" style="max-width: max-content"></canvas>
+</div>
+
+<div class="container Statics_container pt-3">
+    <h2>آمار براساس کشور های بازدید کننده</h2>
+    <canvas id="countryChart" style="max-width: max-content"></canvas>
+</div>
+
+<div class="container Statics_container pt-3">
+    <h2>آمار براساس بازدید در 30 ماه اخیر</h2>
+    <canvas id="monthlyChart" style="max-width: max-content"></canvas>
+</div>
+
+<div class="container Statics_container pt-3">
+    <h2>آمار بر اساس صفحات ارجاع دهنده</h2>
+    @{ var domainId = 1;}
+    @foreach (var item in Model.StaticsByDomains)
+    {
+        <div class="row Statics_row">
+            <div class="col">
+                @item.Domain
+            </div>
+            <div class="col">
+                @item.Count
+            </div>
+            <div class="col">
+                <button class="btn btn-light btn-sm" onclick="showUrls('@domainId')"><i class="fa fa-plus"></i>بیشتر</button>
+            </div>
+        </div>
+        <div id="@domainId" class="hidden">
+            @foreach (var url in item.Urls)
+            {
+                <div class="row Statics_row">
+                    <div class="col">
+                        <a href="@url.Url" target="_blank">@url.Url</a>
+                    </div>
+                    <div class="col">
+                        @url.Count
+                    </div>
+                </div>
+            }
+        </div>
+        domainId++;
+    }
+</div>
+
+
+@{
+    var countryLabels = JsonConvert.SerializeObject(Model.StaticsByCountries.Select(x => x.CountryName));
+    var countryData = JsonConvert.SerializeObject(Model.StaticsByCountries.Select(x => x.Count));
+    var dailyLabels = JsonConvert.SerializeObject(Model.StaticsByDates.Take(30).Select(x => x.Date.ToString("d")));
+    var dailyData = JsonConvert.SerializeObject(Model.StaticsByDates.Take(30).Select(x => x.Count));
+    var monthlyLabels = JsonConvert.SerializeObject(Model.StaticsByMonths.Take(30).Select(x => x.Month));
+    var monthlyData = JsonConvert.SerializeObject(Model.StaticsByMonths.Take(30).Select(x => x.Count));
+}
+@section scripts
+{
+    <script>
+        setCountryChart('@countryData','@countryLabels');
+        setDailyChart('@dailyData','@dailyLabels');
+        setMonthlyChart('@monthlyData','@monthlyLabels');
+    </script>
+}

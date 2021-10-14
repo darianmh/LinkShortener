@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using LinkShortener.Models;
 using LinkShortener.Models.Api;
-using LinkShortener.Models.Link;
+using LinkShortener.Models.Statics;
 using LinkShortener.Services.LinkService;
 using LinkShortener.Services.Statics;
 using Microsoft.AspNetCore.Http;
@@ -34,11 +34,7 @@ namespace LinkShortener.Controllers
                 Error = "لینک مورد نظر یافت نشد."
             };
             var statics = await _staticsService.GetStatics(link.ShortLink);
-            var model = new StaticModel
-            {
-                //Link =(LinkItemModel) link,
-                Statics = statics
-            };
+            var model = _staticsService.GetStaticsModel(statics, link);
             return new ApiResponse<StaticModel>()
             {
                 Ok = true,

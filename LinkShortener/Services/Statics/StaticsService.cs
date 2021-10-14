@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using LinkShortener.Classes.Mapper;
 using LinkShortener.Data;
+using LinkShortener.Data.Link;
 using LinkShortener.Models.IpLocation;
+using LinkShortener.Models.Statics;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
@@ -43,6 +46,89 @@ namespace LinkShortener.Services.Statics
             shortLink = shortLink.ToUpper();
             return await _db.Statics.Where(x => x.ShortLink.Equals(shortLink))
                 .ToListAsync();
+        }
+        /// <summary>
+        /// create statics report
+        /// </summary>
+        /// <param name="statics"></param>
+        /// <param name="link"></param>
+        /// <returns></returns>
+        public StaticModel GetStaticsModel(List<Data.Statics.Statics> statics, Link link)
+        {
+
+            var model = new StaticModel
+            {
+                Link = link.ToItemModel(),
+                StaticsByDates = GetStaticsByDates(statics),
+                StaticsByMonths = GetStaticsByMonths(statics),
+                TotalVisitCount = statics.Count,
+                StaticsByCountries = GetStaticsByCountries(statics),
+                StaticsByDomains = GetStaticsByDomains(statics)
+            };
+            return model;
+        }
+
+        private List<StaticsByMonth> GetStaticsByMonths(List<Data.Statics.Statics> statics)
+        {
+            var val = statics.GroupBy(x => x.CreateTimeTime.ToString("yyyy MMMMM")).Select(x => new StaticsByMonth
+            {
+                Month = x.Key,
+                Date = x.First().CreateTimeTime.Date,
+                Count = x.Count()
+            }).OrderBy(x => x.Date).Reverse().ToList();
+            return val;
+        }
+
+        /// <summary>
+        /// create domain statics
+        /// which domain and which pages are link to our page
+        /// </summary>
+        /// <param name="statics"></param>
+        /// <returns></returns>
+        private List<StaticsByDomain> GetStaticsByDomains(List<Data.Statics.Statics> statics)
+        {
+            var result = statics.GroupBy(x => (new Uri(x.RefererUrl)).Host).Select(x => new StaticsByDomain
+            {
+                Domain = x.Key,
+                Count = x.Count(),
+                Urls = x.GroupBy(z => z.RefererUrl).Select(c => new StaticsByUrl()
+                {
+                    Count = c.Count(),
+                    Url = c.Key
+                }).ToList()
+            }).ToList();
+
+            return result;
+        }
+
+        /// <summary>
+        /// group visitors by country
+        /// </summary>
+        /// <param name="statics"></param>
+        /// <returns></returns>
+        private List<StaticsByCountry> GetStaticsByCountries(List<Data.Statics.Statics> statics)
+        {
+            var val = statics.GroupBy(x => x.CountryName).Select(x => new StaticsByCountry
+            {
+                CountryName = x.Key,
+                Count = x.Count()
+            }).ToList();
+            return val;
+        }
+
+        /// <summary>
+        /// group visitors by visit date
+        /// </summary>
+        /// <param name="statics"></param>
+        /// <returns></returns>
+        private List<StaticsByDate> GetStaticsByDates(List<Data.Statics.Statics> statics)
+        {
+            var val = statics.GroupBy(x => x.CreateTimeTime.Date).Select(x => new StaticsByDate
+            {
+                Date = x.Key.Date,
+                Count = x.Count()
+            }).OrderBy(x => x.Date).Reverse().ToList();
+            return val;
         }
 
         #endregion

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using LinkShortener.Data.Link;
 using LinkShortener.Models;
 using LinkShortener.Models.Link;
+using LinkShortener.Models.Statics;
 using LinkShortener.Services.LinkService;
 using LinkShortener.Services.Statics;
 
@@ -45,11 +46,7 @@ namespace LinkShortener.Controllers
             var link = await _linkService.GetByShortLinkAsync(shortLink);
             if (shortLink == null) return NotFound();
             var statics = await _staticsService.GetStatics(link.ShortLink);
-            var model = new StaticModel
-            {
-               // Link = link,
-                Statics = statics
-            };
+            var model = _staticsService.GetStaticsModel(statics, link);
             return View(model);
         }
 
