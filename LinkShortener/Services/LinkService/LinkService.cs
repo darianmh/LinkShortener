@@ -57,6 +57,7 @@ namespace LinkShortener.Services.LinkService
                     TotalVisitCount = 0,
                     HeaderText = header,
                     LinkTitle = GetLinkTitle(header),
+                    Description = GetLinkDescription(header),
                     //todo currently all links are public
                     IsPublic = true
                 };
@@ -211,6 +212,20 @@ namespace LinkShortener.Services.LinkService
             return text;
         }
         /// <summary>
+        /// reads header meta description
+        /// </summary>
+        /// <returns></returns>
+        private string GetLinkDescription(string header)
+        {
+            if (string.IsNullOrEmpty(header)) return "";
+            HtmlDocument doc = new HtmlDocument();
+            doc.LoadHtml(header);
+            var metas = doc.DocumentNode.SelectNodes("//meta");
+            var description = metas.FirstOrDefault(x => x.GetAttributeValue("name", "") == "description");
+            var text = description?.GetAttributeValue("content", "") ?? "";
+            return text;
+        }
+        /// <summary>
         /// open url and get header tags text
         /// if response is null that means url is invalid
         /// </summary>
@@ -232,7 +247,7 @@ namespace LinkShortener.Services.LinkService
             HtmlDocument doc = new HtmlDocument();
             doc.LoadHtml(html);
             HtmlNode header = doc.DocumentNode.SelectSingleNode("//head");
-            var text = header.InnerHtml;
+            var text = header?.InnerHtml;
             return text;
         }
 

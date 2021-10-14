@@ -65,7 +65,7 @@ namespace LinkShortener.Classes
 
             //add visit log record to db
             var staticService = (IStaticsService)httpContext.RequestServices.GetService(typeof(IStaticsService));
-            staticService?.Insert(link.ShortLink, httpContext.Connection.RemoteIpAddress?.ToString(),httpContext.Request.Headers["Referer"].ToString());
+            staticService?.Insert(link.ShortLink, httpContext.Connection.RemoteIpAddress?.ToString(), httpContext.Request.Headers["Referer"].ToString());
         }
         /// <summary>
         /// increase and update link visit count

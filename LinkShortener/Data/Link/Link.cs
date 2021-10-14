@@ -26,6 +26,7 @@ namespace LinkShortener.Data.Link
         /// showing headers info like meta tags and keywords
         /// </summary>
         public string HeaderText { get; set; }
+        public string Description { get; set; }
 
         /// <summary>
         /// auto generated from header meta title
