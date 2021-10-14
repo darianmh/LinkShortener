@@ -34,6 +34,7 @@ namespace LinkShortener.Classes
                     routString = CheckStaticInfo(routString, ref checkStatic);
                     //get service from context
                     var linkService = (ILinkService)httpContext.RequestServices.GetService(typeof(ILinkService));
+                    var staticService = (IStaticsService)httpContext.RequestServices.GetService(typeof(IStaticsService));
                     if (linkService == null) return false;
                     //get link model if exist
                     var link = linkService.GetByShortLink(routString);
@@ -43,7 +44,7 @@ namespace LinkShortener.Classes
                         httpContext.Items.TryAdd("LinkObject", link);
                         httpContext.Items.TryAdd("CheckStatic", checkStatic);
                         //log link visit
-                        CreateVisitLog(link, httpContext, linkService);
+                        CreateVisitLog(link, httpContext, linkService, staticService);
                         return true;
                     }
                 }
@@ -58,15 +59,26 @@ namespace LinkShortener.Classes
         /// <param name="link"></param>
         /// <param name="httpContext"></param>
         /// <param name="linkService"></param>
-        private void CreateVisitLog(Link link, HttpContext httpContext, ILinkService linkService)
+        /// <param name="staticService"></param>
+        private void CreateVisitLog(Link link, HttpContext httpContext, ILinkService linkService,
+            IStaticsService staticService)
         {
             //update link
             UpdateLinkVisitCount(link, linkService);
 
             //add visit log record to db
-            var staticService = (IStaticsService)httpContext.RequestServices.GetService(typeof(IStaticsService));
-            staticService?.Insert(link.ShortLink, httpContext.Connection.RemoteIpAddress?.ToString(), httpContext.Request.Headers["Referer"].ToString());
+            AddStaticLog(staticService, link, httpContext);
         }
+
+        private void AddStaticLog(IStaticsService staticService, Link link, HttpContext httpContext)
+        {
+            var result = staticService?.Insert(link.ShortLink, httpContext.Connection.RemoteIpAddress?.ToString(), httpContext.Request.Headers["Referer"].ToString());
+            while (result != null && !result.IsCompleted)
+            {
+
+            }
+        }
+
         /// <summary>
         /// increase and update link visit count
         /// </summary>

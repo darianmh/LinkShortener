@@ -46,7 +46,7 @@ namespace LinkShortener.Services.LinkService
             try
             {
                 var header = await GetHttpHeader(mainLink);
-                if (header == null) return null;
+                if (header == null) header = "";
                 var model = new Link()
                 {
                     CreateDateTime = DateTime.Now,
