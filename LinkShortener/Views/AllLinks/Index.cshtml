@@ -9,11 +9,14 @@
     <partial name="_LinkSortPartial" model="Model.SortModel" />
     <partial name="_LinkPagingPartial" model="Model.SortModel" />
     <hr />
+    @{
+        var count = 1;
+    }
     @foreach (var item in Model.AllLinks)
     {
         <div class="row Statics_row">
             <div class="col3">
-                <a target="_blank" href="@item.MainLink"> @item.MainLink</a>
+                <a target="_blank" href="@item.MainLink"><u>#@count</u>&nbsp;@item.MainLink</a>
             </div>
             <div class="col3">
                 @{ var link = $"{item.ShortLink}%24";}
@@ -23,6 +26,7 @@
                 @item.VisitCount
             </div>
         </div>
+        count++;
     }
     <hr />
     <partial name="_LinkPagingPartial" model="Model.SortModel" />
