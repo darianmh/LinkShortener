@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using LinkShortener.Data;
+using LinkShortener.Models.IpLocation;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace LinkShortener.Services.Statics
 {
@@ -25,11 +28,13 @@ namespace LinkShortener.Services.Statics
                 CreateTimeTime = DateTime.Now,
                 IpV4 = ip,
                 ShortLink = shortLink,
-                RefererUrl = refererUrl
+                RefererUrl = refererUrl,
+                CountryName = await GetCountryName(ip)
             };
             await _db.Statics.AddAsync(model);
             await _db.SaveChangesAsync();
         }
+
 
 
         /// <inheritdoc/>
@@ -43,6 +48,33 @@ namespace LinkShortener.Services.Statics
         #endregion
         #region Utilities
 
+        private async Task<string> GetCountryName(string ip)
+        {
+            try
+            {
+                var client = new HttpClient();
+                var request = new HttpRequestMessage
+                {
+                    Method = HttpMethod.Get,
+                    RequestUri = new Uri("https://ip-geolocation-ipwhois-io.p.rapidapi.com/json/?ip=" + ip),
+                    Headers =
+                    {
+                        { "x-rapidapi-host", "ip-geolocation-ipwhois-io.p.rapidapi.com" },
+                        { "x-rapidapi-key", "d8f626c39amshfb377c17d38608ep103466jsnc9be2a35aed2" },
+                    },
+                };
+                LocationRequestResponse model = null;
+                using var response = await client.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+                var body = await response.Content.ReadAsStringAsync();
+                model = JsonConvert.DeserializeObject<LocationRequestResponse>(body);
+                return model?.country;
+            }
+            catch (Exception e)
+            {
+                return "";
+            }
+        }
 
         #endregion
         #region Ctor

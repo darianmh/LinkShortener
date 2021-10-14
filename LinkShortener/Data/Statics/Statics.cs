@@ -18,5 +18,6 @@ namespace LinkShortener.Data.Statics
         /// link is clicked in which site
         /// </summary>
         public string RefererUrl { get; set; }
+        public string CountryName { get; set; }
     }
 }

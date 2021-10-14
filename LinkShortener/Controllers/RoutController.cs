@@ -47,7 +47,7 @@ namespace LinkShortener.Controllers
             var statics = await _staticsService.GetStatics(link.ShortLink);
             var model = new StaticModel
             {
-                Link = link,
+               // Link = link,
                 Statics = statics
             };
             return View(model);

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using LinkShortener.Models;
 using LinkShortener.Models.Api;
+using LinkShortener.Models.Link;
 using LinkShortener.Services.LinkService;
 using LinkShortener.Services.Statics;
 using Microsoft.AspNetCore.Http;
@@ -35,7 +36,7 @@ namespace LinkShortener.Controllers
             var statics = await _staticsService.GetStatics(link.ShortLink);
             var model = new StaticModel
             {
-                Link = link,
+                //Link =(LinkItemModel) link,
                 Statics = statics
             };
             return new ApiResponse<StaticModel>()
