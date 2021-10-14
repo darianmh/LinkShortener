@@ -20,5 +20,6 @@ namespace LinkShortener.Data
         }
         public virtual DbSet<Link.Link> Links { get; set; }
         public virtual DbSet<Statics.Statics> Statics { get; set; }
+        public virtual DbSet<ErrorLog> ErrorLogs { get; set; }
     }
 }

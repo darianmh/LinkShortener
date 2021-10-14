@@ -25,6 +25,22 @@ namespace LinkShortener.Services.LinkService
         #endregion
         #region Methods
 
+        /// <summary>
+        /// fix link format
+        /// </summary>
+        /// <param name="mainLink">link</param>
+        /// <returns>fixed link</returns>
+        public static string Correct(string mainLink)
+        {
+            if (string.IsNullOrEmpty(mainLink)) return "";
+            //add http
+            if (!(mainLink.StartsWith("http:") || mainLink.StartsWith("https:")))
+            {
+                mainLink = "http://" + mainLink;
+            }
+
+            return mainLink;
+        }
         /// <inheritdoc/>
         public async Task<List<Link>> GetAllLinksAsync()
         {
@@ -362,21 +378,6 @@ namespace LinkShortener.Services.LinkService
             return httpContext.Connection.RemoteIpAddress?.ToString();
         }
 
-        /// <summary>
-        /// fix link format
-        /// </summary>
-        /// <param name="mainLink">link</param>
-        /// <returns>fixed link</returns>
-        private string Correct(string mainLink)
-        {
-            //add http
-            if (!(mainLink.StartsWith("http:") || mainLink.StartsWith("https:")))
-            {
-                mainLink = "http://" + mainLink;
-            }
-
-            return mainLink;
-        }
 
         /// <summary>
         /// generate random links and check they be unique

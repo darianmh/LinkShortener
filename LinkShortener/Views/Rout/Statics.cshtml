@@ -3,7 +3,10 @@
 
 @{
     Layout = "_MyLayout";
-    ViewData["description"] = string.Join("", Model.Link.Description.Take(35)) + "...";
+    if (!string.IsNullOrEmpty(Model.Link.Description))
+    {
+        ViewData["description"] = string.Join("", Model.Link.Description.Take(35)) + "...";
+    }
 }
 
 

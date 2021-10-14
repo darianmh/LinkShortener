@@ -8,6 +8,7 @@ using LinkShortener.Data;
 using LinkShortener.Data.Link;
 using LinkShortener.Models.IpLocation;
 using LinkShortener.Models.Statics;
+using LinkShortener.Services.ErrorLog;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
@@ -18,6 +19,7 @@ namespace LinkShortener.Services.Statics
         #region Fields
 
         private readonly ApplicationDbContext _db;
+        private readonly IErrorLogService _errorLogService;
 
 
         #endregion
@@ -56,17 +58,27 @@ namespace LinkShortener.Services.Statics
         public StaticModel GetStaticsModel(List<Data.Statics.Statics> statics, Link link)
         {
 
-            var model = new StaticModel
+            StaticModel model = new StaticModel();
+            model.Link = link.ToItemModel();
+            try
             {
-                Link = link.ToItemModel(),
-                StaticsByDates = GetStaticsByDates(statics),
-                StaticsByMonths = GetStaticsByMonths(statics),
-                TotalVisitCount = statics.Count,
-                StaticsByCountries = GetStaticsByCountries(statics),
-                StaticsByDomains = GetStaticsByDomains(statics)
-            };
+                model.StaticsByDates = GetStaticsByDates(statics);
+                model.StaticsByMonths = GetStaticsByMonths(statics);
+                model.TotalVisitCount = statics.Count;
+                model.StaticsByCountries = GetStaticsByCountries(statics);
+                model.StaticsByDomains = GetStaticsByDomains(statics);
+            }
+            catch (Exception e)
+            {
+                _errorLogService.Insert(e.Message, e.InnerException?.Message + "\r\n" + e.StackTrace);
+                //ignore
+            }
             return model;
         }
+
+        #endregion
+        #region Utilities
+
 
         private List<StaticsByMonth> GetStaticsByMonths(List<Data.Statics.Statics> statics)
         {
@@ -87,7 +99,8 @@ namespace LinkShortener.Services.Statics
         /// <returns></returns>
         private List<StaticsByDomain> GetStaticsByDomains(List<Data.Statics.Statics> statics)
         {
-            var result = statics.GroupBy(x => (new Uri(x.RefererUrl)).Host).Select(x => new StaticsByDomain
+
+            var result = statics.Where(x => !string.IsNullOrEmpty(x.RefererUrl)).GroupBy(x => (new Uri(LinkService.LinkService.Correct(x.RefererUrl))).Host).Select(x => new StaticsByDomain
             {
                 Domain = x.Key,
                 Count = x.Count(),
@@ -130,10 +143,6 @@ namespace LinkShortener.Services.Statics
             }).OrderBy(x => x.Date).Reverse().ToList();
             return val;
         }
-
-        #endregion
-        #region Utilities
-
         private async Task<string> GetCountryName(string ip)
         {
             try
@@ -164,9 +173,10 @@ namespace LinkShortener.Services.Statics
 
         #endregion
         #region Ctor
-        public StaticsService(ApplicationDbContext db)
+        public StaticsService(ApplicationDbContext db, IErrorLogService errorLogService)
         {
             _db = db;
+            _errorLogService = errorLogService;
         }
 
         #endregion
