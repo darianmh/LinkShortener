@@ -3,6 +3,7 @@
 
 @{
     Layout = "_MyLayout";
+    ViewData["description"] = string.Join("", Model.Link.Description.Take(35)) + "...";
 }
 
 
