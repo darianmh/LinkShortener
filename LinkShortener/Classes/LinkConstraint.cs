@@ -43,8 +43,12 @@ namespace LinkShortener.Classes
                         //put link temp data for transfer to controller
                         httpContext.Items.TryAdd("LinkObject", link);
                         httpContext.Items.TryAdd("CheckStatic", checkStatic);
-                        //log link visit
-                        CreateVisitLog(link, httpContext, linkService, staticService);
+                        if (!checkStatic)
+                        {
+                            //log link visit
+                            CreateVisitLog(link, httpContext, linkService, staticService);
+                        }
+
                         return true;
                     }
                 }
