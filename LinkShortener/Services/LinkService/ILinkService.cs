@@ -29,6 +29,14 @@ namespace LinkShortener.Services.LinkService
         /// <param name="length">length of short link between 0 and 32 chars</param>
         /// <returns>link model if success and null if fail</returns>
         Task<Link> Create(string mainLink, HttpContext httpContext, int length = 5);
+
+        /// <summary>
+        /// main link header and title
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="mainLink"></param>
+        /// <returns></returns>
+        Task<Link> GetLinkInfo(Link model, string mainLink);
         /// <summary>
         /// checks short link exist
         /// case is not important

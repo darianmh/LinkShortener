@@ -24,5 +24,16 @@ namespace LinkShortener.Services.Statics
         /// <param name="link"></param>
         /// <returns></returns>
         StaticModel GetStaticsModel(List<Data.Statics.Statics> statics, Link link);
+
+        Task<List<Data.Statics.Statics>> GetAll();
+        /// <summary>
+        /// get country info from ip address
+        /// https://ip-geolocation-ipwhois-io.p.rapidapi.com
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <returns></returns>
+        Task<string> GetCountryName(string ip);
+
+        void Update(Data.Statics.Statics statics);
     }
 }

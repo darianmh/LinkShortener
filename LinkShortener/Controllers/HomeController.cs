@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using LinkShortener.Services.Helper;
 using Microsoft.AspNetCore.Hosting;
 
 namespace LinkShortener.Controllers
@@ -14,14 +15,17 @@ namespace LinkShortener.Controllers
     public class HomeController : Controller
     {
         private readonly IWebHostEnvironment _hostingEnvironment;
+        private readonly UpdateDbService _updateDbService;
 
-        public HomeController(IWebHostEnvironment hostingEnvironment)
+        public HomeController(IWebHostEnvironment hostingEnvironment, UpdateDbService updateDbService)
         {
             _hostingEnvironment = hostingEnvironment;
+            _updateDbService = updateDbService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            //await _updateDbService.UpdateTitleAndDescription();
             return View();
         }
 

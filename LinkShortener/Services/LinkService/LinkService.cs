@@ -61,8 +61,6 @@ namespace LinkShortener.Services.LinkService
             //mainLink = mainLink.ToUpper();
             try
             {
-                var header = await GetHttpHeader(mainLink);
-                if (header == null) header = "";
                 var model = new Link()
                 {
                     CreateDateTime = DateTime.Now,
@@ -71,12 +69,10 @@ namespace LinkShortener.Services.LinkService
                     IpV4 = GetIpV4(httpContext),
                     UserId = GetUserId(httpContext),
                     TotalVisitCount = 0,
-                    HeaderText = header,
-                    LinkTitle = GetLinkTitle(header),
-                    Description = GetLinkDescription(header),
                     //todo currently all links are public
                     IsPublic = true
                 };
+                model = await GetLinkInfo(model, mainLink);
                 await _db.Links.AddAsync(model);
                 await _db.SaveChangesAsync();
                 return model;
@@ -87,6 +83,16 @@ namespace LinkShortener.Services.LinkService
             }
         }
 
+        /// <inheritdoc/>
+        public async Task<Link> GetLinkInfo(Link model, string mainLink)
+        {
+            var header = await GetHttpHeader(mainLink);
+            if (header == null) header = "";
+            model.HeaderText = header;
+            model.LinkTitle = GetLinkTitle(header);
+            model.Description = GetLinkDescription(header);
+            return model;
+        }
 
 
         /// <inheritdoc/>
@@ -224,7 +230,7 @@ namespace LinkShortener.Services.LinkService
             HtmlDocument doc = new HtmlDocument();
             doc.LoadHtml(header);
             HtmlNode title = doc.DocumentNode.SelectSingleNode("//title");
-            var text = title.InnerText;
+            var text = title?.InnerText;
             return text;
         }
         /// <summary>

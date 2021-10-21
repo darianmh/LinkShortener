@@ -76,6 +76,47 @@ namespace LinkShortener.Services.Statics
             return model;
         }
 
+        public async Task<List<Data.Statics.Statics>> GetAll()
+        {
+            return await _db.Statics.ToListAsync();
+        }
+
+
+        /// <inheritdoc/>
+        public async Task<string> GetCountryName(string ip)
+        {
+            try
+            {
+                var client = new HttpClient();
+                var request = new HttpRequestMessage
+                {
+                    Method = HttpMethod.Get,
+                    RequestUri = new Uri("https://ip-geolocation-ipwhois-io.p.rapidapi.com/json/?ip=" + ip),
+                    Headers =
+                    {
+                        { "x-rapidapi-host", "ip-geolocation-ipwhois-io.p.rapidapi.com" },
+                        { "x-rapidapi-key", "d8f626c39amshfb377c17d38608ep103466jsnc9be2a35aed2" },
+                    },
+                };
+                LocationRequestResponse model = null;
+                using var response = await client.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+                var body = await response.Content.ReadAsStringAsync();
+                model = JsonConvert.DeserializeObject<LocationRequestResponse>(body);
+                return model?.country;
+            }
+            catch (Exception e)
+            {
+                return "";
+            }
+        }
+
+        public void Update(Data.Statics.Statics statics)
+        {
+            _db.Entry(statics).State = EntityState.Modified;
+            _db.SaveChanges();
+        }
+
         #endregion
         #region Utilities
 
@@ -142,33 +183,6 @@ namespace LinkShortener.Services.Statics
                 Count = x.Count()
             }).OrderBy(x => x.Date).Reverse().ToList();
             return val;
-        }
-        private async Task<string> GetCountryName(string ip)
-        {
-            try
-            {
-                var client = new HttpClient();
-                var request = new HttpRequestMessage
-                {
-                    Method = HttpMethod.Get,
-                    RequestUri = new Uri("https://ip-geolocation-ipwhois-io.p.rapidapi.com/json/?ip=" + ip),
-                    Headers =
-                    {
-                        { "x-rapidapi-host", "ip-geolocation-ipwhois-io.p.rapidapi.com" },
-                        { "x-rapidapi-key", "d8f626c39amshfb377c17d38608ep103466jsnc9be2a35aed2" },
-                    },
-                };
-                LocationRequestResponse model = null;
-                using var response = await client.SendAsync(request);
-                response.EnsureSuccessStatusCode();
-                var body = await response.Content.ReadAsStringAsync();
-                model = JsonConvert.DeserializeObject<LocationRequestResponse>(body);
-                return model?.country;
-            }
-            catch (Exception e)
-            {
-                return "";
-            }
         }
 
         #endregion

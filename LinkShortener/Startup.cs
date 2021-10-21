@@ -14,6 +14,7 @@ using LinkShortener.Classes;
 using LinkShortener.Data;
 using LinkShortener.Data.User;
 using LinkShortener.Services.ErrorLog;
+using LinkShortener.Services.Helper;
 using LinkShortener.Services.LinkService;
 using LinkShortener.Services.Statics;
 using LinkShortener.Services.User;
@@ -42,6 +43,7 @@ namespace LinkShortener
             services.AddTransient<ILinkService, LinkService>();
             services.AddTransient<IStaticsService, StaticsService>();
             services.AddTransient<IErrorLogService, ErrorLogService>();
+            services.AddTransient<UpdateDbService>();
             //identity service
             services.AddIdentityCore<ApplicationUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
