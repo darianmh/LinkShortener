@@ -26,7 +26,7 @@ namespace LinkShortener.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("DateTime")
+                    b.Property<DateTime>("CreateDateTime")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("InnerText")
@@ -34,6 +34,9 @@ namespace LinkShortener.Migrations
 
                     b.Property<string>("Text")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdateDateTime")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -89,6 +92,9 @@ namespace LinkShortener.Migrations
                     b.Property<string>("CountryName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("CreateDateTime")
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime>("CreateTimeTime")
                         .HasColumnType("datetime2");
 
@@ -100,6 +106,9 @@ namespace LinkShortener.Migrations
 
                     b.Property<string>("ShortLink")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdateDateTime")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -156,11 +165,20 @@ namespace LinkShortener.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Family")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsSuperAdmin")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -200,6 +218,62 @@ namespace LinkShortener.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("LinkShortener.Data.User.RoleAccess", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AttrName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdateDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("RoleAccess");
+                });
+
+            modelBuilder.Entity("LinkShortener.Data.User.UserToken", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreateDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Token")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdateDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserTokenType")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserToken");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -306,8 +380,30 @@ namespace LinkShortener.Migrations
             modelBuilder.Entity("LinkShortener.Data.Link.Link", b =>
                 {
                     b.HasOne("LinkShortener.Data.User.ApplicationUser", "User")
-                        .WithMany("Links")
+                        .WithMany()
                         .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("LinkShortener.Data.User.RoleAccess", b =>
+                {
+                    b.HasOne("LinkShortener.Data.User.ApplicationRole", "ApplicationRole")
+                        .WithMany("RoleAccesses")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationRole");
+                });
+
+            modelBuilder.Entity("LinkShortener.Data.User.UserToken", b =>
+                {
+                    b.HasOne("LinkShortener.Data.User.ApplicationUser", "User")
+                        .WithMany("UserTokens")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
                 });
@@ -363,9 +459,14 @@ namespace LinkShortener.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("LinkShortener.Data.User.ApplicationRole", b =>
+                {
+                    b.Navigation("RoleAccesses");
+                });
+
             modelBuilder.Entity("LinkShortener.Data.User.ApplicationUser", b =>
                 {
-                    b.Navigation("Links");
+                    b.Navigation("UserTokens");
                 });
 #pragma warning restore 612, 618
         }

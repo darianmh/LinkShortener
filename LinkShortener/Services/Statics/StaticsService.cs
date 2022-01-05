@@ -9,12 +9,13 @@ using LinkShortener.Data.Link;
 using LinkShortener.Models.IpLocation;
 using LinkShortener.Models.Statics;
 using LinkShortener.Services.ErrorLog;
+using LinkShortener.Services.Main;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
 namespace LinkShortener.Services.Statics
 {
-    public class StaticsService : IStaticsService
+    public class StaticsService : MainService<Data.Statics.Statics>, IStaticsService
     {
         #region Fields
 
@@ -76,11 +77,6 @@ namespace LinkShortener.Services.Statics
             return model;
         }
 
-        public async Task<List<Data.Statics.Statics>> GetAll()
-        {
-            return await _db.Statics.ToListAsync();
-        }
-
 
         /// <inheritdoc/>
         public async Task<string> GetCountryName(string ip)
@@ -111,11 +107,6 @@ namespace LinkShortener.Services.Statics
             }
         }
 
-        public void Update(Data.Statics.Statics statics)
-        {
-            _db.Entry(statics).State = EntityState.Modified;
-            _db.SaveChanges();
-        }
 
         #endregion
         #region Utilities
@@ -187,7 +178,7 @@ namespace LinkShortener.Services.Statics
 
         #endregion
         #region Ctor
-        public StaticsService(ApplicationDbContext db, IErrorLogService errorLogService)
+        public StaticsService(ApplicationDbContext db, IErrorLogService errorLogService) : base(db)
         {
             _db = db;
             _errorLogService = errorLogService;

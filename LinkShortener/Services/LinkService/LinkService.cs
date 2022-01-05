@@ -7,6 +7,7 @@ using LinkShortener.Data;
 using LinkShortener.Data.Link;
 using LinkShortener.Models.Link;
 using LinkShortener.Services.Helper;
+using LinkShortener.Services.Main;
 using LinkShortener.Services.Statics;
 using LinkShortener.Services.User;
 using Microsoft.AspNetCore.Http;
@@ -14,7 +15,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LinkShortener.Services.LinkService
 {
-    public class LinkService : ILinkService
+    public class LinkService : MainServiceNonBaseEntity<Link>, ILinkService
     {
         #region Fields
 
@@ -182,12 +183,6 @@ namespace LinkShortener.Services.LinkService
                 if (temp != null) tempList.Add(temp);
             }
             return tempList;
-        }
-
-        public void Update(Link link)
-        {
-            _db.Entry(link).State = EntityState.Modified;
-            _db.SaveChanges();
         }
 
         public ShowAllLinksModel<AdminLinkModel> GetAllLinksShowModelAsync(SortBy sortBy, SortType sortType,
@@ -372,7 +367,8 @@ namespace LinkShortener.Services.LinkService
         /// <returns></returns>
         private int? GetUserId(HttpContext httpContext)
         {
-            return _applicationUserManager.GetUserId(httpContext.User);
+            var id = _applicationUserManager.GetUserId(httpContext.User);
+            return string.IsNullOrEmpty(id) ? (int?)null : Convert.ToInt32(id);
         }
         /// <summary>
         /// set user ip address for later usage
@@ -420,7 +416,7 @@ namespace LinkShortener.Services.LinkService
         #endregion
         #region Ctor
 
-        public LinkService(ApplicationDbContext db, ApplicationUserManager applicationUserManager)
+        public LinkService(ApplicationDbContext db, ApplicationUserManager applicationUserManager) : base(db)
         {
             _db = db;
             _applicationUserManager = applicationUserManager;

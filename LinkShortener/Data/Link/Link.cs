@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using LinkShortener.Data.User;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace LinkShortener.Data.Link
 {
@@ -37,6 +38,7 @@ namespace LinkShortener.Data.Link
         /// </summary>
         public int TotalVisitCount { get; set; }
         //np
+        [JsonIgnore]
         public virtual ApplicationUser User { get; set; }
     }
 }

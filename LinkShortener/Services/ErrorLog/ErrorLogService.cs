@@ -1,9 +1,10 @@
 ﻿using System;
 using LinkShortener.Data;
+using LinkShortener.Services.Main;
 
 namespace LinkShortener.Services.ErrorLog
 {
-    public class ErrorLogService : IErrorLogService
+    public class ErrorLogService : MainService<Data.ErrorLog>, IErrorLogService
     {
         #region Fields
 
@@ -18,11 +19,9 @@ namespace LinkShortener.Services.ErrorLog
             var model = new Data.ErrorLog
             {
                 InnerText = innerText,
-                DateTime = DateTime.Now,
                 Text = text
             };
-            _db.ErrorLogs.Add(model);
-            _db.SaveChanges();
+            Insert(model);
         }
 
         #endregion
@@ -32,7 +31,7 @@ namespace LinkShortener.Services.ErrorLog
         #endregion
         #region Ctor
 
-        public ErrorLogService(ApplicationDbContext db)
+        public ErrorLogService(ApplicationDbContext db) : base(db)
         {
             _db = db;
         }

@@ -7,12 +7,14 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
 using System.Threading.Tasks;
 using LinkShortener.Classes;
 using LinkShortener.Data;
 using LinkShortener.Data.User;
+using LinkShortener.Services;
 using LinkShortener.Services.ErrorLog;
 using LinkShortener.Services.Helper;
 using LinkShortener.Services.LinkService;
@@ -26,31 +28,66 @@ namespace LinkShortener
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment webHostEnvironment)
         {
             Configuration = configuration;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         public IConfiguration Configuration { get; }
+        private IWebHostEnvironment _webHostEnvironment;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            string connectionString;
+            if (_webHostEnvironment.IsDevelopment())
+            {
+                connectionString = Configuration.GetConnectionString("DevelopmentDefaultConnection");
+            }
+            else
+            {
+                connectionString = Configuration.GetConnectionString("ProductionDefaultConnection");
+            }
+
             //add db
-            services.AddDbContext<ApplicationDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("LinkConnectionString")));
+            services.AddDbContext<ApplicationDbContext>(opt =>
+                opt.UseSqlServer(connectionString, b => b.MigrationsAssembly("LinkShortener")));
             //add services
-            services.AddTransient<ILinkService, LinkService>();
-            services.AddTransient<IStaticsService, StaticsService>();
-            services.AddTransient<IErrorLogService, ErrorLogService>();
             services.AddTransient<UpdateDbService>();
-            //identity service
-            services.AddIdentityCore<ApplicationUser>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddRoles<ApplicationRole>()
+            services.AddServices();
+            //identity
+            services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
+                {
+                    options.SignIn.RequireConfirmedAccount = false;
+                })
                 .AddRoleStore<ApplicationRoleStore>()
+                .AddUserStore<ApplicationUserStore>()
                 .AddUserManager<ApplicationUserManager>()
-                .AddRoleManager<ApplicationRoleManager>();
+                .AddRoleManager<ApplicationRoleManager>()
+                .AddSignInManager<ApplicationSigninManager>()
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            //identity account
+            services.ConfigureApplicationCookie(options =>
+            {
+                // Cookie settings
+                options.Cookie.HttpOnly = true;
+                //options.Cookie.Expiration
+
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+                options.LoginPath = "/Account/Index";
+                options.LogoutPath = "/Account/Logout";
+                options.AccessDeniedPath = "/Account/AccessDenied";
+                options.SlidingExpiration = true;
+                //options.ReturnUrlParameter=""
+            });
+            //assembly
+            AssemblyHelper.BaseSiteAssembly = Assembly.GetExecutingAssembly();
+            //admin controllers
+            AdminPanelService.GetAllController(AssemblyHelper.BaseSiteAssembly);
 
             //unicode
             services.AddSingleton<HtmlEncoder>(
@@ -82,7 +119,10 @@ namespace LinkShortener
 
             app.UseRouting();
 
+
+            app.UseAuthentication();
             app.UseAuthorization();
+
 
             app.UseEndpoints(endpoints =>
             {

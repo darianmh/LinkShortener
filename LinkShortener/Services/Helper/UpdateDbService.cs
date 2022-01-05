@@ -21,7 +21,7 @@ namespace LinkShortener.Services.Helper
         #region Methods
         public async Task UpdateIpLocations()
         {
-            var allStatics = await _staticsService.GetAll();
+            var allStatics = await _staticsService.GetAllAsync();
             allStatics = allStatics
                 .Where(x => string.IsNullOrEmpty(x.CountryName) || string.IsNullOrEmpty(x.RefererUrl)).ToList();
             foreach (var statics in allStatics)

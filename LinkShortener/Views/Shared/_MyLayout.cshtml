@@ -1,4 +1,5 @@
-﻿@*
+﻿@using LinkShortener.Services
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
@@ -9,10 +10,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="shortcut icon" type="image/jpg" href="~/icon.png" />
+    <link rel="shortcut icon" type="image/jpg" href="@await Html.GetSiteLogo()" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>داریان - لینک دات آی آر</title>
+    <title>@await Html.GetSiteName()</title>
     <meta name="keywords" content="لینک, کوتاه,فشرده,خلاصه,کوتاه سازی,لینک سازی,link,link shortener,ls1,لینک دات آی آر,داریان,darian,darian mh,سئو" />
     <meta name="description" content="لینک دات آی آر یک محصول از داریان است.محصولی ساده و روان برای خلاصه سازی لینک های شما. -@description" />
     <link href="~/lib/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />

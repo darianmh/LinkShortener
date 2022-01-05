@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using LinkShortener.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace LinkShortener.Data.Statics
 {
-    public class Statics
+    public class Statics : BaseEntity
     {
-        [Key]
-        public int Id { get; set; }
         public string ShortLink { get; set; }
         public string IpV4 { get; set; }
         public DateTime CreateTimeTime { get; set; }

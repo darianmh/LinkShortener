@@ -3,12 +3,13 @@ using System.Globalization;
 using System.Threading.Tasks;
 using LinkShortener.Data.Link;
 using LinkShortener.Models.Link;
+using LinkShortener.Services.Main;
 using LinkShortener.Services.Statics;
 using Microsoft.AspNetCore.Http;
 
 namespace LinkShortener.Services.LinkService
 {
-    public interface ILinkService
+    public interface ILinkService : IMainService<Link>
     {
         /// <summary>
         /// get all links

@@ -2,10 +2,11 @@
 using System.Threading.Tasks;
 using LinkShortener.Data.Link;
 using LinkShortener.Models.Statics;
+using LinkShortener.Services.Main;
 
 namespace LinkShortener.Services.Statics
 {
-    public interface IStaticsService
+    public interface IStaticsService : IMainService<Data.Statics.Statics>
     {
         /// <summary>
         /// instance insert without any checks
@@ -25,7 +26,6 @@ namespace LinkShortener.Services.Statics
         /// <returns></returns>
         StaticModel GetStaticsModel(List<Data.Statics.Statics> statics, Link link);
 
-        Task<List<Data.Statics.Statics>> GetAll();
         /// <summary>
         /// get country info from ip address
         /// https://ip-geolocation-ipwhois-io.p.rapidapi.com
@@ -34,6 +34,5 @@ namespace LinkShortener.Services.Statics
         /// <returns></returns>
         Task<string> GetCountryName(string ip);
 
-        void Update(Data.Statics.Statics statics);
     }
 }

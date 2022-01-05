@@ -1,0 +1,234 @@
+﻿@model LinkShortener.ViewModel.User.ApplicationUserModel
+@{
+	ViewData["ProfileActive"] = "active";
+}
+<!-- -->
+<section>
+	<div class="container">
+
+		<div class="row">
+
+			@await Html.PartialAsync("_AccountMenu")
+
+
+			<div class="col-12 col-sm-12 col-md-12 col-lg-9">
+
+				<!--
+
+					Tab Navigation
+					Last tab remembered using localstorage by sow.nav_deep.js plugin
+
+				-->
+				<ul class="nav nav-tabs">
+					<li class="nav-item">
+						<a class="nav-link nav-link-remember active" data-toggle="tab" href="#tab_account">پروفایل</a>
+					</li>
+
+				</ul>
+
+
+
+				<div class="tab-content">
+
+					<!-- ACCOUNT TAB -->
+					<div id="tab_account" class="tab-pane active">
+
+						<form method="post" asp-controller="Account" asp-action="EditProfile" novalidate class="bs-validate" enctype="multipart/form-data">
+
+
+							<!-- PERSONAL DETAIL -->
+							<div class="p-4 shadow-xs border bt-0 mb-4 bg-white">
+
+								<div class="row">
+									@Html.ValidationSummary()
+									<!-- avatar -->
+									<div class="col-12 col-md-3 text-center">
+
+										<!--
+											Based on `SOW : File Upload`
+
+											For ajax:
+											documentation/plugins-sow-file-upload.html
+										-->
+										<label class="w--120 h--120 rounded-circle text-center position-relative d-inline-block cursor-pointer border border-secondary border-dashed bg-white">
+
+
+											<!--
+												preadded image
+											-->
+											<span class="z-index-2 js-file-input-avatar-ajax-circle-container-preadded d-block absolute-full z-index-1">
+												<span style="background-image:url('../../wwwroot/lib/Smarty/demo.files/images/icons/user80.png')"
+													  class="js-file-input-item d-inline-block position-relative overflow-hidden text-center rounded-circle m-0 p-0 animate-bouncein bg-cover w-100 h-100">
+												</span>
+											</span>
+
+
+											<!-- avatar : : always under image -->
+											<svg class="fill-gray-600 rounded-circle z-index-0 m-4" viewBox="0 0 60 60">
+												<path d="M41.014,45.389l-9.553-4.776C30.56,40.162,30,39.256,30,38.248v-3.381c0.229-0.28,0.47-0.599,0.719-0.951c1.239-1.75,2.232-3.698,2.954-5.799C35.084,27.47,36,26.075,36,24.5v-4c0-0.963-0.36-1.896-1-2.625v-5.319c0.056-0.55,0.276-3.824-2.092-6.525C30.854,3.688,27.521,2.5,23,2.5s-7.854,1.188-9.908,3.53c-2.368,2.701-2.148,5.976-2.092,6.525v5.319c-0.64,0.729-1,1.662-1,2.625v4c0,1.217,0.553,2.352,1.497,3.109c0.916,3.627,2.833,6.36,3.503,7.237v3.309c0,0.968-0.528,1.856-1.377,2.32l-8.921,4.866C1.801,46.924,0,49.958,0,53.262V57.5h46v-4.043C46,50.018,44.089,46.927,41.014,45.389z" />
+												<path d="M55.467,46.526l-9.723-4.21c-0.23-0.115-0.485-0.396-0.704-0.771l6.525-0.005c0,0,0.377,0.037,0.962,0.037c1.073,0,2.638-0.122,4-0.707c0.817-0.352,1.425-1.047,1.669-1.907c0.246-0.868,0.09-1.787-0.426-2.523c-1.865-2.654-6.218-9.589-6.354-16.623c-0.003-0.121-0.397-12.083-12.21-12.18c-1.187,0.01-2.309,0.156-3.372,0.413c0.792,2.094,0.719,3.968,0.665,4.576v4.733c0.648,0.922,1,2.017,1,3.141v4c0,1.907-1.004,3.672-2.607,4.662c-0.748,2.022-1.738,3.911-2.949,5.621c-0.15,0.213-0.298,0.414-0.443,0.604v2.86c0,0.442,0.236,0.825,0.631,1.022l9.553,4.776c3.587,1.794,5.815,5.399,5.815,9.41V57.5H60v-3.697C60,50.711,58.282,47.933,55.467,46.526z" />
+											</svg>
+
+										</label>
+
+									</div>
+									<!-- /avatar -->
+									<!-- detail -->
+									<div class="col">
+
+										<div class="row">
+
+											<div class="col-12 col-sm-6 col-md-6">
+
+												<div class="form-label-group mb-3">
+													<input required placeholder="نام" asp-for="Name" name="Name" type="text" class="form-control">
+													<label asp-for="Name">نام</label>
+												</div>
+
+											</div>
+
+											<div class="col-12 col-sm-6 col-md-6">
+
+												<div class="form-label-group mb-3">
+													<input required placeholder="نام خانوادگی" asp-for="Family" name="Family" type="text" class="form-control">
+													<label asp-for="Family">نام خانوادگی</label>
+												</div>
+
+											</div>
+
+
+
+											<div class="col-12 col-sm-6 col-md-6">
+
+
+												<div class="input-group-over">
+													<div class="form-label-group mb-3">
+														<input readonly placeholder="ایمیل" asp-for="Email" name="Email" type="email" class="form-control">
+														<label asp-for="Email">ایمیل</label>
+													</div>
+
+													<a id="email_edit_show" href="javascript:;" class="btn fs--13" onclick="jQuery('#account_email').attr('readonly', false); jQuery('#email_edit_show, #email_edit_info').addClass('hide'); jQuery('#email_edit_hide, #email_edit_info').removeClass('hide');jQuery('#account_email').val('').focus();">
+														<i class="fi fi-pencil m-0"></i>
+													</a>
+
+													<a id="email_edit_hide" href="javascript:;" class="btn fs--12 hide" onclick="jQuery('#account_email').attr('readonly', true); jQuery('#email_edit_show, #email_edit_info').removeClass('hide'); jQuery('#email_edit_hide, #email_edit_info').addClass('hide'); jQuery('#account_email').val('john.doe@gmail.com');">
+														<i class="fi fi-close m-0"></i>
+													</a>
+
+												</div>
+
+												<div id="email_edit_info" class="mt-1 mb-4 fs--13 text-muted hide">
+													بعد از تغییر یک پیام برای تایید به شما ایمیل خواهد شد
+												</div>
+												<!-- /ایمیل -->
+
+											</div>
+
+
+											<div class="col-12 col-sm-6 col-md-6">
+
+												<div class="form-label-group mb-3">
+													<input required placeholder="شماره تماس" asp-for="PhoneNumber" name="PhoneNumber" type="text" class="form-control">
+													<label asp-for="PhoneNumber">شماره تماس</label>
+												</div>
+
+											</div>
+
+										</div>
+
+
+
+									</div>
+									<!-- detail -->
+
+								</div>
+
+
+							</div>
+							<!-- /PERSONAL DETAIL -->
+							<!-- PASSWORD -->
+							<div class="p-4 shadow-xs rounded mb-4 bg-white">
+
+								<a href="#user_edit_password" class="btn-toggle btn fs--14 btn-light collapsed" data-toggle="collapse" aria-expanded="false" onclick="jQuery('#user_password_current, #user_password_new').val('');">
+									<span class="group-icon float-start">
+										<i class="fi fi-arrow-down"></i>
+										<i class="fi fi-close"></i>
+									</span> &nbsp;
+
+									تغییر رمز عبور
+								</a>
+
+								<div id="user_edit_password" class="collapse" style="">
+
+									<div class="row mt-3">
+
+										<div class="col-12 col-sm-6 col-md-6">
+
+											<div class="input-group-over">
+												<div class="form-label-group mb-3">
+													<input placeholder="رمز فعلی" asp-for="CurrentPassword" name="CurrentPassword" type="password" class="form-control">
+													<label for="CurrentPassword">رمز فعلی</label>
+												</div>
+
+												<!-- `SOW : Form Advanced` plugin used -->
+												<a href="#" class="btn fs--12 btn-password-type-toggle" data-target="#User_CurrentPassword">
+													<span class="group-icon">
+														<i class="fi fi-eye m-0"></i>
+														<i class="fi fi-close m-0"></i>
+													</span>
+												</a>
+											</div>
+
+										</div>
+
+										<div class="col-12 col-sm-6 col-md-6">
+
+											<div class="input-group-over">
+												<div class="form-label-group mb-3">
+													<input placeholder="رمز جدید" asp-for="NewPassword" name="NewPassword" type="password" class="form-control">
+													<label for="NewPassword">رمز جدید</label>
+												</div>
+
+												<!-- `SOW : Form Advanced` plugin used -->
+												<a href="#" class="btn fs--12 btn-password-type-toggle" data-target="#User_NewPassword">
+													<span class="group-icon">
+														<i class="fi fi-eye m-0"></i>
+														<i class="fi fi-close m-0"></i>
+													</span>
+												</a>
+											</div>
+
+										</div>
+
+									</div>
+
+								</div>
+
+							</div>
+							<!-- /PASSWORD -->
+
+
+							<div class="border-top pt-4 mt-1">
+
+								<button type="submit" class="btn btn-primary">
+									<i class="fi fi-check"></i>
+									ذخیره تغییرات
+								</button>
+
+							</div>
+
+						</form>
+
+					</div>
+
+
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+</section>
+<!-- / -->
