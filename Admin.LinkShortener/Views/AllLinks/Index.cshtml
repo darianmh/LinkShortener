@@ -29,6 +29,9 @@
                 <td>
                     @item.VisitCount
                 </td>
+                <td>
+                    <a target="_blank" asp-controller="AdminLink" asp-action="Details" asp-route-ShortLink="@item.ShortLink">ویرایش</a>
+                </td>
             </tr>
             count++;
         }
