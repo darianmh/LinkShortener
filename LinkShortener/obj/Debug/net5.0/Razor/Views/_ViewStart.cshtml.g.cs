@@ -19,15 +19,8 @@ using LinkShortener;
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 2 "E:\Projects\LinkShortener\LinkShortener\Views\_ViewImports.cshtml"
-using LinkShortener.Models;
-
-#line default
-#line hidden
-#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8db31d2357677f9dff8c0ae6c2038906b71fedd3", @"/Views/_ViewStart.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"863a608176d661b90e4d01ebab3337638674f932", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6fad201abaa5a43b18097d4ba9f080734146ad6c", @"/Views/_ViewImports.cshtml")]
     public class Views__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

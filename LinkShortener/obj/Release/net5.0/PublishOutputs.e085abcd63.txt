@@ -1,4 +1,5 @@
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\LinkShortener.exe
+E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\wwwroot\App\LS1.apk
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\wwwroot\css\ErrorStyle.css
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\wwwroot\css\HomeCss.css
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\wwwroot\css\LinkRedirect.css
@@ -225,6 +226,7 @@ E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\HtmlAgilit
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\Humanizer.dll
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\Microsoft.AspNetCore.Cryptography.Internal.dll
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\Microsoft.AspNetCore.Http.Features.dll
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\Microsoft.AspNetCore.Identity.UI.Views.V4.dll
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\Microsoft.AspNetCore.Identity.UI.dll
@@ -244,6 +246,7 @@ E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\Microsoft.
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\Microsoft.Extensions.FileProviders.Embedded.dll
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\Microsoft.Extensions.Identity.Core.dll
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\Microsoft.Extensions.Identity.Stores.dll
+E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\Microsoft.Extensions.Primitives.dll
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\Microsoft.Identity.Client.dll
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\Microsoft.IdentityModel.JsonWebTokens.dll
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\Microsoft.IdentityModel.Logging.dll
@@ -267,6 +270,7 @@ E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\System.Com
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\System.Configuration.ConfigurationManager.dll
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\System.Diagnostics.DiagnosticSource.dll
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\System.IdentityModel.Tokens.Jwt.dll
+E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\System.IO.Pipelines.dll
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\System.Runtime.Caching.dll
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\System.Security.Cryptography.ProtectedData.dll
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\cs\Microsoft.CodeAnalysis.resources.dll
@@ -335,6 +339,10 @@ E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\runtimes\w
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\Data.LinkShortener.dll
+E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\Services.LinkShortener.dll
+E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\Services.LinkShortener.pdb
+E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\Data.LinkShortener.pdb
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\wwwroot\Identity\css\site.css
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\wwwroot\Identity\favicon.ico
 E:\Projects\LinkShortener\LinkShortener\obj\Release\net5.0\PubTmp\Out\wwwroot\Identity\js\site.js

@@ -19,15 +19,8 @@ using LinkShortener;
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 2 "E:\Projects\LinkShortener\LinkShortener\Views\_ViewImports.cshtml"
-using LinkShortener.Models;
-
-#line default
-#line hidden
-#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6ef8702ed2546463689fad81e3d9d23d2e379e4a", @"/Views/Home/App.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"863a608176d661b90e4d01ebab3337638674f932", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6fad201abaa5a43b18097d4ba9f080734146ad6c", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_App : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "Download", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -66,7 +59,7 @@ using LinkShortener.Models;
 #line hidden
 #nullable disable
             WriteLiteral("<p>دانلود نرم افزار به صورت خودکار آغاز خواهد. اگر بعد از 5 ثانیه دانلود آغاز نشد، \r\n    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6ef8702ed2546463689fad81e3d9d23d2e379e4a4222", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6ef8702ed2546463689fad81e3d9d23d2e379e4a4047", async() => {
                 WriteLiteral("اینجا کلیک کنید.");
             }
             );
@@ -83,7 +76,7 @@ using LinkShortener.Models;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n    </p>\r\n<p>\r\n    نرم افزار \r\n    <b>لینک دات آی آر</b>\r\n    یک نرم افزار سریع و کابردی برای آسایش شماست. شما با این نرم افزار به راحتی و با سرعت می توانید لینک های خود تبدیل به یک لینک کوتاه و مختصر تبدیل کنید.\r\n</p>\r\n<p>با \r\n    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6ef8702ed2546463689fad81e3d9d23d2e379e4a5716", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6ef8702ed2546463689fad81e3d9d23d2e379e4a5541", async() => {
                 WriteLiteral("داریان");
             }
             );

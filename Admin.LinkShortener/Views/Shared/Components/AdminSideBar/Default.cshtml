@@ -1,0 +1,100 @@
+﻿
+@using Services.LinkShortener.Services
+<!--
+
+				SIDEBAR
+
+					Example gradients:
+						.aside-primary
+						.bg-gradient-default
+						.bg-gradient-purple
+						etc
+
+						* Footer should also match
+			-->
+<aside id="aside-main" class="aside-start aside-primary font-weight-light aside-hide-xs d-flex flex-column h-auto">
+
+
+	<!--
+		LOGO
+		visibility : desktop only
+	-->
+	<div class="d-none d-sm-block">
+		<div class="clearfix d-flex justify-content-between">
+
+			<!-- Logo : height: 60px max -->
+			<a class="w-100 align-self-center navbar-brand p-3" href="https://ls1.ir">
+				<img src="@await Html.GetSiteLogo()" width="110" height="60" alt="@await Html.GetSiteName()">
+			</a>
+
+		</div>
+	</div>
+	<!-- /LOGO -->
+
+
+	<div class="aside-wrapper scrollable-vertical scrollable-styled-light align-self-baseline h-100 w-100">
+
+		<!--
+
+			All parent open navs are closed on click!
+			To ignore this feature, add .js-ignore to .nav-deep
+
+			Links height (paddings):
+				.nav-deep-xs
+				.nav-deep-sm
+				.nav-deep-md  	(default, ununsed class)
+
+			.nav-deep-hover 	hover background slightly different
+			.nav-deep-bordered	bordered links
+
+
+			++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			IMPORTANT NOTE:
+				Curently using ajax navigation!
+				remove .js-ajax class to have regular links!
+			++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		-->
+		<nav class="nav-deep nav-deep-dark nav-deep-hover fs--15 pb-5">
+			<ul class="nav flex-column">
+
+
+
+
+
+				@foreach (var group in Model)
+				{
+					var groupActive = group.IsActive ? "active" : "";
+					<li class="nav-item @groupActive">
+						<a class="nav-link" href="#">
+							<span class="group-icon float-end">
+								<i class="fi fi-arrow-end-slim"></i>
+								<i class="fi fi-arrow-down-slim"></i>
+							</span>
+							<i class="fi fi-layers"></i>
+							@group.Group
+						</a>
+
+						<ul class="nav flex-column">
+
+							@foreach (var item in group.Links)
+							{
+								var itemActive = item.IsActive ? "active" : "";
+								<li class="nav-item @itemActive">
+									<a class="nav-link" href="/@item.LinkUrl">
+										@item.Name
+									</a>
+								</li>
+							}
+						</ul>
+					</li>
+
+				}
+
+
+
+			</ul>
+		</nav>
+
+	</div>
+</aside>
+<!-- /SIDEBAR -->

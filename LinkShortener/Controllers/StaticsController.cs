@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using LinkShortener.Models;
-using LinkShortener.Models.Api;
-using LinkShortener.Models.Statics;
-using LinkShortener.Services.LinkService;
-using LinkShortener.Services.Statics;
+using Data.LinkShortener.Models.Api;
+using Data.LinkShortener.Models.Statics;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Services.LinkShortener.Services.LinkService;
+using Services.LinkShortener.Services.Statics;
 
 namespace LinkShortener.Controllers
 {

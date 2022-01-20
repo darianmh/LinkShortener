@@ -1,0 +1,62 @@
+﻿@using Data.LinkShortener.ViewModel
+@model List<Data.LinkShortener.ViewModel.EditCreateTemplateViewModel>
+<div>
+</div>
+@foreach (var item in Model)
+{
+	var check = false;
+	<div class="form-group mb-3">
+		@if (item.ObjectType != EditCreateTemplateType.Hidden)
+		{
+			<label for='@item.Name'>@item.DisplayName</label>
+			if (item.ObjectType == EditCreateTemplateType.DbList || item.ObjectType == EditCreateTemplateType.Enum || item.ObjectType == EditCreateTemplateType.DbListMulti || item.ObjectType == EditCreateTemplateType.EnumMulti)
+			{
+				if (item.ListForOptionList != null)
+				{
+					@foreach (var option in item.ListForOptionList)
+					{
+						if (option.Selected)
+						{
+							<p>@option.Text</p>
+							if (option.HasImage)
+							{
+								<img src="@option.ImagePath" width="50px" />
+							}
+						}
+					}
+				}
+				check = true;
+			}
+
+			else if (item.ObjectType == EditCreateTemplateType.HtmlEditor)
+			{
+				<p class="border p-3">@Html.Raw(item.Value)</p>
+
+				check = true;
+			}
+			else if (item.ObjectType == EditCreateTemplateType.TextArea)
+			{
+				<p class="border p-3">@item.Value</p>
+				check = true;
+			}
+			else if (item.ObjectType == EditCreateTemplateType.File)
+			{
+				if (!string.IsNullOrEmpty(item.Value?.ToString()))
+				{
+					<img class="w-100 img-fluid rounded" src="@item.Value" alt="...">
+				}
+				check = true;
+			}
+			else if (item.ObjectType == EditCreateTemplateType.Bool)
+			{
+				var checkVal = (bool)item.Value == true ? "بله" : "خیر";
+				<p>@checkVal</p>
+				check = true;
+			}
+			if (!check)
+			{
+				<p>@item.Value</p>
+			}
+		}
+	</div>
+}

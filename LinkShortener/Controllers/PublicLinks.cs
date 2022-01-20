@@ -3,10 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using LinkShortener.Data.Link;
-using LinkShortener.Models.Link;
-using LinkShortener.Services.LinkService;
-using LinkShortener.Services.Statics;
+using Data.LinkShortener.Models.Link;
+using Services.LinkShortener.Services.LinkService;
 
 namespace LinkShortener.Controllers
 {

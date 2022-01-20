@@ -1,0 +1,44 @@
+@model Data.LinkShortener.ViewModel.AdminListViewModel<Data.LinkShortener.ViewModel.User.ApplicationUserModel>
+@{
+	Layout = "_AdminLayout";
+}
+
+
+
+
+<!-- start:row -->
+<div class="row gutters-sm">
+
+	<!-- start:col: -->
+	<div class="col-12 mb-3">
+
+		<!-- start:portlet -->
+		<div class="portlet">
+
+			<div class="portlet-header border-bottom">
+				<span>لیست</span>
+				<a asp-action="Create" class="btn btn-sm rounded-circle btn-outline-primary mb-2 float-end">
+					<i class="fi fi-plus"></i>
+				</a>
+			</div>
+
+			<div class="portlet-body">
+				<div class="container py-6">
+
+					<form class="bs-validate" novalidate="" id="form_id" method="post" action="#">
+
+						@await Component.InvokeAsync("AdminIndexListing", new { paging = Model.AdminListPaginationModel, items=Model.Items })
+					</form>
+
+				</div>
+			</div>
+
+		</div>
+		<!-- end:portlet -->
+
+	</div>
+	<!-- end:col: -->
+
+</div>
+<!-- end:row: -->
+<!-- doc:end -->

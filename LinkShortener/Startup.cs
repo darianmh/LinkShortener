@@ -11,18 +11,15 @@ using System.Reflection;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
 using System.Threading.Tasks;
+using Data.LinkShortener.Data;
+using Data.LinkShortener.Data.User;
 using LinkShortener.Classes;
-using LinkShortener.Data;
-using LinkShortener.Data.User;
-using LinkShortener.Services;
-using LinkShortener.Services.ErrorLog;
-using LinkShortener.Services.Helper;
-using LinkShortener.Services.LinkService;
-using LinkShortener.Services.Statics;
-using LinkShortener.Services.User;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
+using Services.LinkShortener.Services;
+using Services.LinkShortener.Services.Helper;
+using Services.LinkShortener.Services.User;
 
 namespace LinkShortener
 {

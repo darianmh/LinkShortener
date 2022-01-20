@@ -1,0 +1,92 @@
+﻿@model Data.LinkShortener.ViewModel.EditCreateTemplateViewModel
+<div class="col-12 col-lg-12 mb-5 border p-3">
+
+
+	<ul class="nav nav-pills mb-3" id="pills-icon-tab" role="tablist">
+		<li class="nav-item mx-1">
+			<a class="nav-link btn btn-primary b-0 shadow-md btn-noshadow text-center active" id="pills-icon-home-tab" data-toggle="pill" href="#pills-icon-file" role="tab" aria-controls="pills-icon-file" aria-selected="true">
+				<span class="d-block">
+					<i class="fi fi-arrow-upload"></i>
+				</span>
+				تصاویر موجود
+			</a>
+		</li>
+
+		<li class="nav-item mx-1">
+			<a class="nav-link btn btn-primary b-0 shadow-md btn-noshadow text-center" id="pills-icon-profile-tab" data-toggle="pill" href="#pills-icon-address" role="tab" aria-controls="pills-icon-address" aria-selected="false">
+				<span class="d-block">
+					<i class="fi fi-cloud-upload"></i>
+				</span>
+				آدرس فایل
+			</a>
+		</li>
+
+	</ul>
+
+	<div class="tab-content" id="pills-icon-tabContent">
+
+		<div class="tab-pane fade show active" id="pills-icon-file" role="tabpanel" aria-labelledby="pills-icon-file-tab">
+			<div class="row">
+
+				<div class="col-12">
+					<button type="button" onclick="LoadAdminImage('@Model.Name')" class="btn btn-primary btn-soft mb-3">
+						<i class="fi fi-mollecules"></i>
+						نمایش تصاویر موجود
+					</button>
+					@{ var id = Model.Name + "Pre";}
+					<div class="row" id='@id'>
+						@if (!string.IsNullOrEmpty(Model.Value?.ToString()))
+						{
+							<div class="col-2  mb-4"><img class="w-100 img-fluid rounded" src="@Model.Value.ToString()"></div>
+						}
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div class="tab-pane fade show" id="pills-icon-address" role="tabpanel" aria-labelledby="pills-icon-address-tab">
+
+			<input class='form-control text-box single-line' id='@Model.Name' name='@Model.Name' type='@Model.TypeName' value='@Model.Value'>
+		</div>
+
+
+	</div>
+
+
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalFull" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelFull" aria-hidden="true">
+
+	<div class="modal-dialog modal-full" role="document">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabelFull">Modal title</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span class="fi fi-close fs--18" aria-hidden="true"></span>
+				</button>
+			</div>
+
+			<div class="modal-body">
+				<div class="row" id="ModalImageContainer">
+
+				</div>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">
+					<i class="fi fi-close"></i>
+					لغو
+				</button>
+				<button type="button" class="btn btn-primary" onclick="LoadImages()">
+					<i class="fi fi-plus"></i>
+					بارگزاری بیشتر
+				</button>
+			</div>
+
+		</div>
+	</div>
+</div>

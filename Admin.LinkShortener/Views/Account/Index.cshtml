@@ -1,0 +1,231 @@
+﻿@model Data.LinkShortener.ViewModel.User.LoginRegisterViewModel
+<!-- FORM -->
+<section>
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col-12 col-sm-12 offset-sm-0 col-md-8 offset-md-2 col-lg-6 offset-lg-0 order-2 order-lg-1">
+
+				<div class="accordion" id="accordionAccount">
+					@if (Model.HasMessage)
+					{
+						<div class="alert alert-danger" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span class="fi fi-close" aria-hidden="true"></span>
+							</button>
+
+							@Html.ValidationSummary()
+						</div>
+					}
+					@{
+						var loginShow = Model.IsLogin ? "show" : "";
+						var registerShow = Model.IsRegister ? "show" : "";
+						var passwordShow = Model.IsPassword ? "show" : "";
+					}
+
+					<!-- SIGN IN -->
+					<form class="collapse bs-validate @loginShow" novalidate method="post" asp-controller="Account" asp-action="Login" id="accordionAccountSignIn" data-parent="#accordionAccount">
+
+						<!-- title -->
+						<h2 class="text-primary mb-1">
+							<span class="font-weight-normal">ورود</span>
+						</h2>
+						<p class="mb-5 font-weight-medium b-0">
+							ایمیل یا شماره تلفن خود را وارد نمایید.
+						</p>
+
+						<div class="p-5 rounded shadow-xs">
+
+
+							<!--
+							<p class="text-danger">
+								Ups! Please check again
+							</p>
+							-->
+
+
+							<div class="form-label-group mb-3">
+								<input required placeholder="ایمیل، شماره تلفن" asp-for="LoginName" class="form-control">
+								<label asp-for="LoginName">ایمیل یا شماره تلفن</label>
+							</div>
+
+							<div class="input-group-over">
+								<div class="form-label-group mb-3">
+									<input required placeholder="رمزعبور" asp-for="LoginPassword" type="password" class="form-control">
+									<label asp-for="LoginPassword">رمزعبور</label>
+								</div>
+
+								<a href="#accordionAccountPasswd" class="btn btn-pill fs--12" data-toggle="collapse" aria-expanded="true" aria-controls="accordionAccountPasswd">
+									رمز عبور ندارید؟
+								</a>
+
+							</div>
+
+							<button type="submit" class="btn btn-primary btn-soft btn-block">
+								ورود
+							</button>
+
+							<div class="text-center mt--30">
+								<a href="#accordionAccountSignUp" class="d-block text-success text-decoration-none" data-toggle="collapse" aria-expanded="true" aria-controls="accordionAccountSignUp">
+									حساب کاربری ندارم!
+								</a>
+							</div>
+
+						</div>
+						<input type="hidden" asp-for="IsLogin" value="true" />
+						<input type="hidden" asp-for="RedirectUrl" />
+
+					</form>
+					<!-- /SIGN IN -->
+					<!-- PASSWD RESET -->
+					<form class="collapse bs-validate @passwordShow" novalidate method="post" asp-controller="Account" asp-action="ForgotPassword" id="accordionAccountPasswd" data-parent="#accordionAccount">
+
+						<!-- title -->
+						<h2 class="text-primary mb-1">
+							<span class="font-weight-normal">Password</span> Reset
+						</h2>
+						<p class="mb-5 font-weight-medium b-0">
+							نام کاربری خودرا وارد نمایید!
+						</p>
+
+						<div class="p-5 rounded shadow-xs">
+
+							<h2 class="h5 text-center mb-5 mt-3">
+								ایمیل تایید به حسابتان ارسال خواهد شد!
+							</h2>
+
+
+							<!--
+							<p class="text-danger">
+								Ups! Please check again
+							</p>
+							-->
+
+
+							<div class="form-label-group mb-4">
+								<input required asp-for="ForgetName" class="form-control">
+								<label asp-for="ForgetName">ایمیل یا شماره تماس</label>
+							</div>
+
+							<button type="submit" class="btn btn-primary btn-soft btn-block">
+								بازیابی رمز عبور
+							</button>
+
+							<div class="text-center mt--30">
+								<a href="#accordionAccountSignIn" class="d-block text-success text-decoration-none" data-toggle="collapse" aria-expanded="true" aria-controls="accordionAccountSignIn">
+									بازگشت به ورود
+								</a>
+							</div>
+
+						</div>
+						<input type="hidden" asp-for="IsPassword" value="true" />
+					</form>
+					<!-- /PASSWD RESET -->
+					<!-- SIGN UP -->
+					<form class="collapse bs-validate @registerShow" novalidate method="post" asp-controller="Account" asp-action="Register" id="accordionAccountSignUp" data-parent="#accordionAccount">
+
+						<!-- title -->
+						<h2 class="text-primary mb-1">
+							<span class="font-weight-normal">ثبت نام</span>
+						</h2>
+						<p class="mb-5 font-weight-medium b-0">
+							ایجاد حساب کاربری
+						</p>
+
+						<div class="p-5 rounded shadow-xs">
+
+
+							<!--
+							<p class="text-danger">
+								Ups! Please check again
+							</p>
+							-->
+
+
+							<div class="form-label-group mb-3">
+								<input required placeholder="نام" asp-for="Name" type="text" class="form-control">
+								<label asp-for="Name">نام</label>
+							</div>
+
+							<div class="form-label-group mb-3">
+								<input required placeholder="نام خانوادگی" asp-for="Family" type="text" class="form-control">
+								<label asp-for="Family">نام خانوادگی</label>
+							</div>
+
+							<div class="form-label-group mb-3">
+								<input required placeholder="ایمیل" asp-for="Email" class="form-control">
+								<label asp-for="Email">ایمیل</label>
+							</div>
+							<div class="form-label-group mb-3">
+								<input required placeholder="Emaiشماره تماسl" asp-for="PhoneNumber" class="form-control">
+								<label asp-for="PhoneNumber">شماره تماس</label>
+							</div>
+
+
+							<div class="input-group-over">
+								<div class="form-label-group mb-3">
+									<input required placeholder="رمز عبور" asp-for="Password" type="password" class="form-control">
+									<label asp-for="Password">رمز عبور</label>
+								</div>
+
+								<!-- `SOW : Form Advanced` plugin used -->
+								<a href="#" class="btn fs--12 btn-password-type-toggle" data-target="#Password">
+									<span class="group-icon">
+										<i class="fi fi-eye m-0"></i>
+										<i class="fi fi-close m-0"></i>
+									</span>
+								</a>
+
+							</div>
+
+
+							<!-- GDPR CONSENT -->
+							<div class="clearfix bg-light position-relative rounded p-4 mb-4">
+
+
+								<label class="form-checkbox form-checkbox-primary">
+									<input required type="checkbox" name="checkbox">
+									<i></i>
+									<span>
+										با این مورد شما تمام قوانین سایت را پذیرفته اید.
+										<a asp-controller="Home" asp-action="Privacy" target="_blank">قوانین</a>.
+									</span>
+								</label>
+
+							</div>
+							<!-- /GDPR CONSENT -->
+
+							<button type="submit" class="btn btn-primary btn-soft btn-block">
+								ثبت نام
+							</button>
+
+							<div class="text-center mt--30">
+								<a href="#accordionAccountSignIn" class="d-block text-muted text-decoration-none" data-toggle="collapse" aria-expanded="true" aria-controls="accordionAccountSignIn">
+									بازشگت به ورود
+								</a>
+							</div>
+
+						</div>
+
+						<input type="hidden" asp-for="IsRegister" value="true" />
+					</form>
+					<!-- /SIGN UP -->
+
+
+				</div>
+
+			</div>
+
+			<div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-0 order-1 order-lg-2">
+
+				<!-- remove .mt--n50 if image has no top margin -->
+				<img class="img-fluid mt--n50" src="~/lib/Smarty/demo.files/svg/premium/using_product.svg" alt="...">
+
+			</div>
+
+		</div>
+
+	</div>
+</section>
+<!-- /FORM -->

@@ -5,10 +5,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
-using LinkShortener.Data.Link;
-using LinkShortener.Models.Api;
-using LinkShortener.Services.Helper;
-using LinkShortener.Services.LinkService;
+using Data.LinkShortener.Data.Link;
+using Data.LinkShortener.Models.Api;
+using Services.LinkShortener.Services.Helper;
+using Services.LinkShortener.Services.LinkService;
 
 namespace LinkShortener.Controllers
 {

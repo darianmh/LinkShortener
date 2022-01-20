@@ -1,0 +1,38 @@
+﻿@model Data.LinkShortener.Models.Link.ShowAllLinksModel<Data.LinkShortener.Models.Link.AdminLinkModel>
+
+@{
+    Layout = "_AdminLayout";
+}
+
+
+<div class="container Statics_container">
+    <partial name="_LinkSortPartial" model="Model.SortModel" />
+    <hr />
+    @{
+        var count = 1;
+    }
+    <table class="table">
+
+        @foreach (var item in Model.AllLinks)
+        {
+            <tr>
+                <th scope="row">
+                    <span><u>#@count</u></span>
+                </th>
+                <td>
+                    <a target="_blank" href="@item.MainLink">@item.MainLink</a>
+                </td>
+                <td>
+                    @{ var link = $"https://ls1.ir/{item.ShortLink}%24";}
+                    <a target="_blank" href="@link"> @item.ShortLink</a>
+                </td>
+                <td>
+                    @item.VisitCount
+                </td>
+            </tr>
+            count++;
+        }
+    </table>
+    <hr />
+    <partial name="_LinkPagingPartial" model="Model.SortModel" />
+</div>

@@ -3,12 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using LinkShortener.Data.Link;
-using LinkShortener.Models;
-using LinkShortener.Models.Link;
-using LinkShortener.Models.Statics;
-using LinkShortener.Services.LinkService;
-using LinkShortener.Services.Statics;
+using Data.LinkShortener.Data.Link;
+using Data.LinkShortener.Models.Link;
+using Services.LinkShortener.Services.LinkService;
+using Services.LinkShortener.Services.Statics;
 
 namespace LinkShortener.Controllers
 {
@@ -37,8 +35,9 @@ namespace LinkShortener.Controllers
             //get the right object
             var linkObject = await GetLinkObject(item);
             if (linkObject == null) return NotFound();
-            if (checkStatic != null && ((bool)checkStatic)) return RedirectToAction("Statics", new { shortLink = linkObject.ShortLink });
-            return View(linkObject);
+            //if (checkStatic != null && ((bool)checkStatic)) return RedirectToAction("Statics", new { shortLink = linkObject.ShortLink });
+            if (checkStatic != null && ((bool)checkStatic)) return await Statics(shortLink: linkObject.ShortLink);
+            return View("Index", linkObject);
         }
 
         public async Task<IActionResult> Statics(string shortLink)
@@ -47,7 +46,7 @@ namespace LinkShortener.Controllers
             if (shortLink == null) return NotFound();
             var statics = await _staticsService.GetStatics(link.ShortLink);
             var model = _staticsService.GetStaticsModel(statics, link);
-            return View(model);
+            return View("Statics", model);
         }
 
         #endregion

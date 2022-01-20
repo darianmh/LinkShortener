@@ -20,7 +20,7 @@ function setCountryChart(dataString, labelsString) {
   var backgroundColor = [];
   var borderColor = [];
   $.each(data,
-    function() {
+    function () {
       backgroundColor.push('rgba(75, 192, 192, 0.2)');
       borderColor.push('rgba(75, 192, 192, 1)');
     });
@@ -57,7 +57,7 @@ function setDailyChart(dataString, labelsString) {
   var backgroundColor = [];
   var borderColor = [];
   $.each(data,
-    function() {
+    function () {
       backgroundColor.push('rgba(255, 99, 132, 0.2)');
       borderColor.push('rgba(255, 99, 132, 1)');
     });
@@ -94,7 +94,7 @@ function setMonthlyChart(dataString, labelsString) {
   var backgroundColor = [];
   var borderColor = [];
   $.each(data,
-    function() {
+    function () {
       backgroundColor.push('rgba(255, 206, 86, 0.2)');
       borderColor.push('rgba(255, 206, 86, 1)');
     });

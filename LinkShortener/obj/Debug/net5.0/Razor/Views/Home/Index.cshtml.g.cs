@@ -19,15 +19,8 @@ using LinkShortener;
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 2 "E:\Projects\LinkShortener\LinkShortener\Views\_ViewImports.cshtml"
-using LinkShortener.Models;
-
-#line default
-#line hidden
-#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ded3622d864fd041120d0a1912cf13d03767e81c", @"/Views/Home/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"863a608176d661b90e4d01ebab3337638674f932", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6fad201abaa5a43b18097d4ba9f080734146ad6c", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("link"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -69,7 +62,7 @@ using LinkShortener.Models;
 #line hidden
 #nullable disable
             WriteLiteral("<h6>کوتاه کننده لینک به همراه ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ded3622d864fd041120d0a1912cf13d03767e81c4842", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ded3622d864fd041120d0a1912cf13d03767e81c4667", async() => {
                 WriteLiteral("نرم افزار");
             }
             );
@@ -86,7 +79,7 @@ using LinkShortener.Models;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</h6>\r\n<div class=\"search-box\">\r\n    <div class=\"search-icon pointer\" onclick=\"getLink()\"><i class=\"fa fa-link search-icon\"></i></div>\r\n    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ded3622d864fd041120d0a1912cf13d03767e81c6233", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ded3622d864fd041120d0a1912cf13d03767e81c6058", async() => {
                 WriteLiteral("\r\n        <input type=\"text\" style=\"direction: ltr\" placeholder=\"لینک شما\" id=\"search\" autocomplete=\"off\">\r\n    ");
             }
             );

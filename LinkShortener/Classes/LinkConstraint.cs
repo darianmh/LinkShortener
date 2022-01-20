@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using LinkShortener.Data.Link;
-using LinkShortener.Services.LinkService;
-using LinkShortener.Services.Statics;
+using Data.LinkShortener.Data.Link;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Routing;
+using Services.LinkShortener.Services.LinkService;
+using Services.LinkShortener.Services.Statics;
 
 namespace LinkShortener.Classes
 {
