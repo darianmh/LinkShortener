@@ -354,8 +354,6 @@ footer {
 .Statics_container {
     background-color: #2c303a;
     margin-bottom: 5%;
-    text-align: left;
-    direction: ltr;
 }
 
 .Statics_row {
@@ -374,3 +372,10 @@ footer {
         width: 50% !important;
         overflow: hidden;
     }
+
+
+
+* {
+    direction: rtl !important;
+    text-align: right;
+}

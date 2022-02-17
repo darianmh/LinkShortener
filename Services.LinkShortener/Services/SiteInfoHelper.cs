@@ -24,7 +24,7 @@ namespace Services.LinkShortener.Services
         }
         public static async Task<string> GetSiteLogo(this IHtmlHelper helper)
         {
-            return "../../icon.png";
+            return "https://ls1.ir/icon.png";
         }
         public static async Task<string> GetSiteName(this IHtmlHelper helper)
         {

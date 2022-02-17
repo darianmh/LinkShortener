@@ -10,7 +10,7 @@
 
 .text {
     display: block;
-    position: absolute;
+    position: initial;
     left: 30%;
     right: 30%;
     top: 2%;
@@ -51,4 +51,11 @@
     50% {
         transform: scale(1);
     }
+}
+
+
+.ads {
+    width: 50%;
+    display: block;
+    margin: auto;
 }

@@ -11,13 +11,28 @@
 	<meta charset="UTF-8">
 	<link href="~/css/LinkRedirect.css" rel="stylesheet" />
 	@Html.Raw(Model.Header)
+	@* یکتا نت *@
+	<script type="text/javascript">
+		(function(){
+			var now = new Date();
+			var head = document.getElementsByTagName('head')[0];
+			var script = document.createElement('script');
+			script.async = true;
+			var script_address = 'https://cdn.yektanet.com/js/ls1.ir/native-ls1.ir-23590.js';
+			script.src = script_address + '?v=' + now.getFullYear().toString() + '0' + now.getMonth() + '0' + now.getDate() + '0' + now.getHours();
+			head.appendChild(script);
+		})();
+	</script>
 </head>
 <body dir="rtl">
-	<div class="text">
-		<a href="https://ls1.ir">لینک دات آی آر</a>
-		@*<p>تا چند لحظه دیگر به صفحه مورد نظر منتقل خواهید شد</p>*@
-	</div>
-	<svg x="0" y="0" width="258" height="258">
+<div class="text">
+	<a href="https://ls1.ir">لینک دات آی آر</a>
+	@*<p>تا چند لحظه دیگر به صفحه مورد نظر منتقل خواهید شد</p>*@
+</div>
+<div class="ads">
+	<div id="pos-article-display-67315"></div>
+</div>
+	@*<svg x="0" y="0" width="258" height="258">
 
 		<g clip-path="url(#clip-path)">
 
@@ -110,12 +125,12 @@
 
 		</clipPath>
 
-	</svg>
+	</svg>*@
 	<script>
 		setTimeout(function () {
         window.location = '@Model.MainLink';
       },
-      2000);
+      7000);
 	</script>
 </body>
 </html>

@@ -72,7 +72,6 @@ E:\Projects\LinkShortener\Data.LinkShortener\bin\Release\net5.0\System.Security.
 E:\Projects\LinkShortener\Data.LinkShortener\bin\Release\net5.0\System.Security.Principal.Windows.xml
 E:\Projects\LinkShortener\Data.LinkShortener\bin\Release\net5.0\System.Security.Permissions.xml
 E:\Projects\LinkShortener\Data.LinkShortener\bin\Release\net5.0\System.Windows.Extensions.xml
-E:\Projects\LinkShortener\Data.LinkShortener\obj\Release\net5.0\Data.LinkShortener.csprojAssemblyReference.cache
 E:\Projects\LinkShortener\Data.LinkShortener\obj\Release\net5.0\Data.LinkShortener.GeneratedMSBuildEditorConfig.editorconfig
 E:\Projects\LinkShortener\Data.LinkShortener\obj\Release\net5.0\Data.LinkShortener.AssemblyInfoInputs.cache
 E:\Projects\LinkShortener\Data.LinkShortener\obj\Release\net5.0\Data.LinkShortener.AssemblyInfo.cs
@@ -81,3 +80,4 @@ E:\Projects\LinkShortener\Data.LinkShortener\obj\Release\net5.0\Data.LinkShorten
 E:\Projects\LinkShortener\Data.LinkShortener\obj\Release\net5.0\Data.LinkShortener.dll
 E:\Projects\LinkShortener\Data.LinkShortener\obj\Release\net5.0\ref\Data.LinkShortener.dll
 E:\Projects\LinkShortener\Data.LinkShortener\obj\Release\net5.0\Data.LinkShortener.pdb
+E:\Projects\LinkShortener\Data.LinkShortener\obj\Release\net5.0\Data.LinkShortener.csproj.AssemblyReference.cache

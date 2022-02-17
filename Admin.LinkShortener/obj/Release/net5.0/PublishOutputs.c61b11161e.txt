@@ -1,6 +1,8 @@
 E:\Projects\LinkShortener\Admin.LinkShortener\obj\Release\net5.0\PubTmp\Out\Admin.LinkShortener.exe
+E:\Projects\LinkShortener\Admin.LinkShortener\obj\Release\net5.0\PubTmp\Out\wwwroot\css\MyStyle.css
 E:\Projects\LinkShortener\Admin.LinkShortener\obj\Release\net5.0\PubTmp\Out\wwwroot\css\site.css
 E:\Projects\LinkShortener\Admin.LinkShortener\obj\Release\net5.0\PubTmp\Out\wwwroot\favicon.ico
+E:\Projects\LinkShortener\Admin.LinkShortener\obj\Release\net5.0\PubTmp\Out\wwwroot\js\AdminJs.js
 E:\Projects\LinkShortener\Admin.LinkShortener\obj\Release\net5.0\PubTmp\Out\wwwroot\js\MyScript.js
 E:\Projects\LinkShortener\Admin.LinkShortener\obj\Release\net5.0\PubTmp\Out\wwwroot\js\site.js
 E:\Projects\LinkShortener\Admin.LinkShortener\obj\Release\net5.0\PubTmp\Out\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
